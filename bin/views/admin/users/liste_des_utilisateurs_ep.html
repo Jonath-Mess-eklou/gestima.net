@@ -1,0 +1,41 @@
+{% extends layouts %}{% from breadcrumb import breadcrumb_field %} {% from message import alert_msg %}{% from forms import input_search , loader , buttom_href %}{% from pagination import pagination_field %} {% block content %}
+<div class="container">
+    {{ breadcrumb_field( path.dashboard() , 'LISTE DES UTILISATEURS DE LA PLATE-FORME' )}} {{ alert_msg( reponse , alert ) }}{{ input_search('datasearch' , 'submitsearch' , 'Recherche...' , 'classsearch') }}
+    <form method="post" id="datasform">
+        {{ loader() }}{{ __csrf() }}
+        <table class='table table-bordered table-striped mb-0 tableaffichage nowrap' id='tabledata'>
+            <thead scope="row">
+                <tr>
+                    <th>Nº</th>
+                    <th>LOGIN</th>
+                    <th>NOM ET PRENOMS</th>
+                    <th>GROUPE UTILISATEURS</th>
+                    <th>ETAT</th>
+                    <th>ACTIONS</th>
+                </tr>
+            </thead>
+            {% for select in liste_users %} {% set counter = (counter | default (0))+1 %}    
+                <tbody scope="row" id="searchtd">
+                    <td class='nodre' style="width: 5%">{{ counter|e }}</td>
+                    <td style="width: 7%">{{ select.loginuser_bd|e }}</td>
+                    <td style="width: 20%">{{ select.nomprenoms_user|e }}</td>
+                    <td style="width: 20%">{{ data.user( select.type_user_bd|e ) }}</td>
+                    {% if select.etat_userbd|e == 1 %}
+                    <td style="width: 5%"><i class="fa fa-check-circle-o activ"></i></td>
+                    {% else %}
+                    <td style="width: 5%"><i class="fa fa-times-circle-o desact"></i></td>
+                    {% endif %}
+                    <td style="width: 30%">
+                        {% if select.type_user_bd|e !=1 %}
+                            <button type="btn" class="editer" name="__etat__" value="{{ select.loginuser_bd|e }}"><strong><i class="fa fa-key"></i> Activ/Desact</strong></button>
+                            <button type="btn" class="editer" name="__reinit__" value="{{ select.loginuser_bd|e }}"><strong><i class="fa fa-refresh"></i> Reinitialiser MDP</strong></button>
+                        {% endif %} 
+                    </td>
+                </tbody>
+            {% endfor %}
+        </table>
+    </form>
+    {{ pagination_field( pagecourante , pages_total , effectif_total ) }}
+</div>
+
+{% endblock %}

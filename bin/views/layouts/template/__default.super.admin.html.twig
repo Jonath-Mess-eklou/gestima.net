@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ __css('/bootstrap.min') }}" rel="stylesheet">
+    <link href="{{ __cssfont('font-awesome-min') }}" rel="stylesheet" type="text/css">
+    <link href="{{ __cssbsico('bootstrap-icons') }}" rel="stylesheet" type="text/css">
+    <link href="{{ __cssiconfont('icofont.min') }}" rel="stylesheet" type="text/css">
+    <link href="{{ __css('aos') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ __css('default.admin.style') }}" rel="stylesheet">
+    <script src="{{ __js('default.chart') }}"></script>
+    <link rel="icon" href="{{ __img('logo.png') }}">
+    <title>{{ __msg('site-title') }}</title>
+</head>
+<body>
+
+ <!-- ======= Header ======= -->
+ <header id="header" class="header fixed-top d-flex align-items-center">
+
+ <div class="d-flex align-items-center justify-content-between">
+     <a href="{{ __host() }}" class="logo d-flex align-items-center">
+         <span class="d-none d-lg-block">EPAPHRODITE <br> FRAMEWORK V 1.0</span>
+     </a>
+     <i class="bi bi-list toggle-sidebar-btn"></i>
+ </div>
+
+ <nav class="header-nav ms-auto">
+     <ul class="d-flex align-items-center">
+
+         <li class="nav-item d-block d-lg-none">
+             <a class="nav-link nav-icon search-bar-toggle " href="#">
+                 <i class="bi bi-search"></i>
+             </a>
+         </li>
+         <!-- End Search Icon-->
+
+         <li class="nav-item dropdown">
+
+             <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+                 <i class="bi bi-bell"></i>
+                 <span class="badge bg-primary badge-number">0</span>
+             </a>
+             <!-- End Notification Icon -->
+
+         </li>
+         <!-- End Notification Nav -->
+
+         <li class="nav-item dropdown">
+
+             <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+                 <i class="bi bi-chat-left-text"></i>
+                 <span class="badge bg-success badge-number">0</span>
+             </a>
+             <!-- End Messages Icon -->
+         </li>
+         <!-- End Messages Nav -->
+
+         <li class="nav-item dropdown pe-3">
+
+             <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+                 <img src="{{ __img('avatar.png') }}" alt="Profile" class="rounded-circle">
+                 <span class="d-none d-md-block dropdown-toggle ps-2">{{ login }}</span>
+             </a>
+             <!-- End Profile Iamge Icon -->
+
+             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                 <li class="dropdown-header">
+                     <h6>{{ login }}</h6>
+                     <span>SUPER ADMINISTRATEUR</span>
+                 </li>
+                 <li>
+                     <hr class="dropdown-divider">
+                 </li>
+
+                 <li>
+                     <a class="dropdown-item d-flex align-items-center" href="{{ __path('users','modifier_infos_users') }}">
+                         <i class="bi bi-person"></i>
+                         <span>Mon profil</span>
+                     </a>
+                 </li>
+                 <li>
+                     <hr class="dropdown-divider">
+                 </li>
+
+                 <li>
+                     <a class="dropdown-item d-flex align-items-center" href="{{ __logout() }}">
+                         <i class="bi bi-box-arrow-right"></i>
+                         <span>Deconnexion</span>
+                     </a>
+                 </li>
+             </ul>
+         </li>
+         <!-- End Profile Nav -->
+     </ul>
+ </nav>
+ <!-- End Icons Navigation -->
+
+</header>
+<!-- End Header -->  
+
+    <!-- ======= Sidebar ======= -->
+    <aside id="sidebar" class="sidebar">
+
+        <ul class="sidebar-nav" id="sidebar-nav">
+
+            <li class="nav-item">
+                <a class="nav-link " href="{{ __host() }}">
+                    <i class="bi bi-house"></i>
+                    <span>Modules application</span>
+                </a>
+            </li>
+
+            <!-- End Dashboard Nav -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#profil-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-person-circle"></i><span>Mon profil</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="profil-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="{{ __path('users','modifier_infos_users') }}">
+                            <i class="bi bi-circle"></i><span>Mes infos perso</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ __path('users','modifier_mot_de_passe') }}">
+                            <i class="bi bi-circle"></i><span>Modifier mot de passe</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>          
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#import-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-layer-forward"></i><span>Importation fichiers</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="import-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="{{ __path('users','import_des_utilisateurs') }}">
+                            <i class="bi bi-circle"></i><span>Import utilisateurs</span>
+                        </a>                       
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#export-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-layer-backward"></i><span>Exportation fichiers</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="export-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="#">
+                            <i class="bi bi-circle"></i><span>Export Fchiers</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>   
+            
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#print-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-printer"></i><span>Gest. impression</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="print-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="#">
+                            <i class="bi bi-circle"></i><span>Impression fichiers</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>   
+            
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#statistic-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-graph-up-arrow"></i><span>Gest. Statistiques</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="statistic-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="#">
+                            <i class="bi bi-circle"></i><span>Stat. utilisateurs</span>
+                        </a>
+                    </li>
+                </ul>
+            </li> 
+            
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#annuaire-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-journal-bookmark"></i><span>Gest. Annuaire</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="annuaire-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="#">
+                            <i class="bi bi-circle"></i><span>Annuaire utilisateurs</span>
+                        </a>                                               
+                    </li>
+                </ul>
+            </li>             
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#msg-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-envelope"></i><span>Gest. Messagerie</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="msg-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="#">
+                            <i class="bi bi-circle"></i><span>Envoyer mail</span>
+                        </a>
+                        <a href="#">
+                            <i class="bi bi-circle"></i><span>Liste mail Envoyer</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>             
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#gestusers-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-people"></i><span>Gest. utilisateurs</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="gestusers-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="{{ __path('users','liste_des_utilisateurs') }}">
+                            <i class="bi bi-circle"></i><span>Liste utilisateurs</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>  
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#actions-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-journal-text"></i><span>Actions recentes</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="actions-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="#">
+                            <i class="bi bi-circle"></i><span>Liste des actions</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>             
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#usersright-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-lock"></i><span>Droits utilisateurs</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="usersright-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="{{ __path('setting','gest_droits_acces_users') }}">
+                            <i class="bi bi-circle"></i><span>Liste droits utilisateurs</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>   
+            
+            <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#parametres-nav" data-bs-toggle="collapse" href="#">
+                    <i class="bi bi-gear"></i><span>Gest. parametres</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="parametres-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                    <li>
+                        <a href="#">
+                            <i class="bi bi-circle"></i><span>Gest. qualit&eacute;</span>
+                        </a>                       
+                    </li>
+                </ul>
+            </li>              
+            <!-- End Tables Nav -->
+
+        </ul>
+
+    </aside>
+    <!-- End Sidebar-->  
+
+  <main id="main" class="main">
+    {% block content %}{% endblock %}
+  </main>
+
+<div class="loader"><div class="tools_loader" id="loader-1"></div></div>
+<script src="{{ __js('jquery') }}"></script><script src="{{ __js('jsquery') }}"></script><script src="{{ __js('bootstrap.bundle.min') }}"></script><script src="{{ __js('aos') }}"></script><script src="{{ __js('main') }}"></script><script>jQuery(function ($) {$(".sidebar-dropdown > a").click(function() {$(".sidebar-submenu").slideUp(300);if ($(this).parent().hasClass("active")) {$(".sidebar-dropdown").removeClass("active");$(this).parent().removeClass("active");}else{$(".sidebar-dropdown").removeClass("active");$(this).next(".sidebar-submenu").slideDown(300);$(this).parent().addClass("active");}});$("#close-sidebar").click(function() {$(".page-wrapper").removeClass("toggled");});$("#show-sidebar").click(function() {$(".page-wrapper").addClass("toggled");});});</script><script>jQuery(window).load(function(){ jQuery(".loader").fadeOut("200"); });</script><script>$(".loaderpage").hide();</script><script type="text/javascript">$(document).ready(function(){$('#datasform').submit(function() {$('#loaderdatas').show(); return true;});});</script>
+</body>
+</html>

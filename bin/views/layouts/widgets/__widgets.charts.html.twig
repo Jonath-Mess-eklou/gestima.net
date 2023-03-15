@@ -1,0 +1,27 @@
+{% macro bar_chart( xValues , yvalues , barColors , name , label ) %}
+<script>
+    var xValues = [ "{{ xValues }}" ];
+    var yValues = [ "{{ yvalues }}" ];
+    var barColors = [ "{{ barColors }}" ];
+
+   
+
+    new Chart( "{{ name }}" , {
+        type: "bar",
+        data: {
+            labels: xValues,
+            datasets: [{
+                data: yValues,
+                backgroundColor: barColors,
+            }]
+        },
+        options: {
+            title: {
+                display: true,
+                text: "{{ label }}"
+            }
+
+        }
+    });
+</script>
+{% endmacro %}}

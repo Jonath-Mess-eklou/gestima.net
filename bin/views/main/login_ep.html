@@ -1,0 +1,39 @@
+{% extends layouts %} {% from form import input_field , submit %} {% block content %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="logo aos-init" data-aos="fade-right" data-aos-offset="300" align="center"><img src="{{ __img('logo.png') }}" class="img-fluid"></div>
+        <div class="col-md-12 titlesite">AUTHENTIFICATION</div>
+    </div>
+    <div class="container mt-20">
+        <div class="form aos-init" data-aos="fade-up" data-aos-offset="300">
+            <div class="reponses {{ class }}">{{ reponse ? reponse : "" }}</div>
+            <form class="validateforms" method="post" novalidate>
+                <div class="row g-3">
+                {{ __csrf() }} {{ input_field('login','Login','text' , "Entrez votre Login svp!!!" ) }} {{ input_field('password','Mot de passe','password' , "Entrez votre mot de passe svp!!!" ) }} {{ submit('Se connecter' , 'bi bi-lock') }}
+            </div>
+            </form>
+        </div>
+        <div class="epaphrodite" align="center">
+            <a href="{{ __host() }}"><i class="icofont-long-arrow-left"></i> Retour</a>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        'use strict';
+        window.addEventListener('load', function() {
+            var forms = document.getElementsByClassName('validateforms');
+            var validation = Array.prototype.filter.call(forms, function(form) {
+                form.addEventListener('submit', function(event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }, false);
+    })();
+</script>
+{% endblock %}

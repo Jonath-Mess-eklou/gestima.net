@@ -1,0 +1,42 @@
+{% extends layouts %}{% from breadcrumb import breadcrumb_field %}{% from message import alert_msg %} {% from form import button , loader %}{% from message import alert_msg %} {% block content %}{{ breadcrumb_field( path.dashboard(),"GESTION DES DROITS
+D'UTILISATEURS", path.admin( 'setting' ,'gest_droits_acces_users') ,"HABILITATIONS DES UTILISATEURS" )}}
+<div class="container">
+    {{ alert_msg( reponse , alert ) }}
+    <div class="row" style="margin-top: 20px;">
+        <div class="col-md-12 text-center">
+            <div class="outer-form">
+                <form method="post" id="datasform">
+                    <table class="table-striped table table-bordered tableaffichage">
+                        {{ loader() }}{{ __csrf() }}
+                        <thead>
+                            <tr>
+                                <th class="head">GROUPE UTILISAT.</th>
+                                <th class="head">MODULES | HABILITATIONS</th>
+                                <th class="head">ETAT</th>
+                                <th class="head">ACTION</th>
+                            </tr>
+                        </thead>
+                        {% for select in select %}
+                        <tbody>
+                            <tr>
+                                <td style="width: 20%">{{ datas.user( select.idtype_user_rights|e ) }}</td>
+                                <td style="width: 35%">{{ datas.modules( select.modules|e ) ~' | ' ~datas.yedidiah( select.idpages|e , 'libelle' ) }}</td>
+                                {% if select.autorisations|e == 1 %}
+                                <td style="width:5%;text-align:center;" align="center"><i class="icofont-check-circled activ"></i></td>
+                                {% else %}
+                                <td style="width:5%;text-align:center;" align="center"><i class="icofont-close desact"></i></td>
+                                {% endif %}
+                                <td style="width: 30%">
+                                    <button type="btn" name="__autorisation__" rel="tooltip" class="btn btn-success btn-just-icon btn-sm" value="{{ select.iduser_rights|e }}"><i class="icofont-tick-boxed"></i> Autoriser.</button>
+                                    <button type="btn" name="__refuser__" rel="tooltip" class="btn btn-warning btn-just-icon btn-sm" value="{{ select.iduser_rights|e }}"><i class="icofont-close"></i> Refuser.</button>
+                                    <button type="btn" name="__deleted__" rel="tooltip" class="btn btn-danger btn-just-icon btn-sm" value="{{ select.iduser_rights|e }}"><i class="icofont-ui-delete"></i> Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                        {% endfor %}
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</div> {% endblock %}

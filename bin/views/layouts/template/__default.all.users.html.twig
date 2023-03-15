@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ __css('bootstrap.min.style') }}" rel="stylesheet">
+    <link href="{{ __cssfont('font.awesome.style') }}" rel="stylesheet" type="text/css">
+    <link href="{{ __cssiconfont('icofont.min') }}" rel="stylesheet" type="text/css">
+    <link href="{{ __css('aos') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ __css('default.admin.style') }}" rel="stylesheet">
+    <script src="{{ __js('default.chart') }}"></script>
+    <link rel="icon" href="{{ __img('logo.png') }}">
+    <script src="{{ __js('cycle.chart') }}"></script>
+    <title>{{ __msg('site-title') }}</title>
+</head>
+<body>
+<div class="page-wrapper chiller-theme toggled">
+  <a id="show-sidebar" class="btn btn-sm btn-dark" href="#"><i class="fa fa-reorder"></i></a>
+  <nav id="sidebar" class="sidebar-wrapper">
+    <div class="sidebar-content">
+      <div class="sidebar-brand">
+        <a href="{{ __host() }}">Bienvenu</br><strong>{{ __login() }}</strong></a>
+        <div id="close-sidebar"><i class="icofont-close-line"></i></div>
+      </div>
+      <div class="sidebar-header">
+        <div class="user-info">
+          <span class="user-status"><i class="fa fa-circle-o text-success"></i><span>En ligne</span></span>
+          <span class="user-status"><i class="fa fa-reply"></i><span><a href="{{ __host() }}">Dashboard</a></span></span>
+        </div>
+      </div>
+      <div class="sidebar-menu">
+        <ul>
+          <li class="header-menu"><span>Menu de gestion</span></li>
+            {% if __ifmodules('profil') == true %}
+              <li class="sidebar-dropdown"><a href="#"><i class="fa fa-cog"></i><span>{{ __libmodules('profil') }}</span></a>
+                <div class="sidebar-submenu">
+                  <ul>
+                    {% for select in __menus('profil') %}
+                      <li><a href="{{ __yedidiah(select.idpages|e , 'path' ) }}">{{ __yedidiah(select.idpages|e , 'libelle' ) }}</a></li>
+                    {% endfor %}
+                  </ul>
+                </div>
+            {% endif %}                                                                               
+            {% if __ifmodules('right') == true %}
+              <li class="sidebar-dropdown"><a href="#"><i class="fa fa-cog"></i><span>{{ __libmodules('right') }}</span></a>
+                <div class="sidebar-submenu">
+                  <ul>
+                    {% for select in __menus('right') %}
+                      <li><a href="{{ __yedidiah(select.idpages|e , 'path' ) }}">{{ __yedidiah(select.idpages|e , 'libelle' ) }}</a></li>
+                    {% endfor %}
+                  </ul>
+                </div>
+            {% endif %} 
+            {% if __ifmodules('users') == true %}
+              <li class="sidebar-dropdown"><a href="#"><i class="fa fa-cog"></i><span>{{ __libmodules('users') }}</span></a>
+                <div class="sidebar-submenu">
+                  <ul>
+                    {% for select in __menus('users') %}
+                      <li><a href="{{ __yedidiah(select.idpages|e , 'path' ) }}">{{ __yedidiah(select.idpages|e , 'libelle' ) }}</a></li>
+                    {% endfor %}
+                  </ul>
+                </div>
+            {% endif %}                                                                                                 
+        </ul>
+      </div>
+    </div>
+    <div class="sidebar-footer">
+      <a href="{{ __logout() }}">D&eacute;connexion <i class="icofont-power"></i></a>
+    </div>
+  </nav>
+  <main class="page-content">
+    <div class="container-fluid" id="contenu">
+        <div class="container header-title"><strong>{{ __msg('site-title') }}</strong></div>
+        {% block content %}{% endblock %}
+    </div>
+  </main>
+</div>
+<div class="loader"><div class="tools_loader" id="loader-1"></div></div>
+<script>(function() { 'use strict'; window.addEventListener('load', function() { var forms = document.getElementsByClassName('validerinfos'); var validation = Array.prototype.filter.call(forms, function(form) { form.addEventListener('submit', function(event) { if (form.checkValidity() === false) { event.preventDefault(); event.stopPropagation();}form.classList.add('was-validated');}, false);});}, false);})();</script><script src="{{ __js('jquery') }}"></script><script src="{{ __js('bootstrap') }}"></script><script src="{{ __js('aos') }}"></script><script src="{{ __js('main') }}"></script><script>jQuery(function ($) {$(".sidebar-dropdown > a").click(function() {$(".sidebar-submenu").slideUp(300);if ($(this).parent().hasClass("active")) {$(".sidebar-dropdown").removeClass("active");$(this).parent().removeClass("active");}else{$(".sidebar-dropdown").removeClass("active");$(this).next(".sidebar-submenu").slideDown(300);$(this).parent().addClass("active");}});$("#close-sidebar").click(function() {$(".page-wrapper").removeClass("toggled");});$("#show-sidebar").click(function() {$(".page-wrapper").addClass("toggled");});});</script><script>jQuery(window).load(function(){ jQuery(".loader").fadeOut("200"); });</script><script>$(".loaderpage").hide();</script><script type="text/javascript">$(document).ready(function(){$('#datasform').submit(function() {$('#loaderdatas').show(); return true;});});</script>
+</body>
+</html>

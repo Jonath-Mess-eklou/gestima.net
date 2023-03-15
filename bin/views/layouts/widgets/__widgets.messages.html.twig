@@ -1,0 +1,9 @@
+{% macro alert_msg( reponse , alert ) %}
+    {% if reponse %}
+        <div class="alert {{ alert }} alert-dismissible fade show" role="alert" id="msgvalidation">
+            {% if alert=='alert-success' %}<i class="bi bi-check-square me-2"></i>{% else %} <i class="bi bi-exclamation-triangle me-2"></i>{% endif %}
+            {{ reponse }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    {% endif %}
+{% endmacro %}

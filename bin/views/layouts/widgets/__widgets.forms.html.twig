@@ -1,0 +1,96 @@
+<!-- All kind of input -->
+{% macro input_field( name , label , type , indications , readonly , value , chaine , maxcaractere, require  ) %}
+  <div class="form-group g-3">
+    {% if label != false %}
+      <label class="form-label">{{ label }}</label>
+    {% endif %}
+      <input type="{{ type }}" class="form-control" name="{{ name }}" {% if value != false %} value="{{ value }}" {% endif %} {% if readonly == true %} readonly="readonly" {% endif %} {% if chaine == true %}onkeyup="this.value=this.value.toUpperCase();"{% endif %} {% if maxcaractere != false %}maxlength={{ maxcaractere }}{% endif %} required>
+    {% if indications != false %}
+      <div class="invalid-feedback">{{ indications }}</div>
+    {% endif %}
+  </div>
+{% endmacro %}
+
+{% macro buttom_href(href , label , class , id , icon) %}
+  <button type="submit" id="{{ id }}" class="btn {{ class }}">
+    {% if icon != false %}<i class="{{ icon }} "></i>{% endif %} <a href="{{ href }}">{{ label }}</a>
+  </button>
+{% endmacro %}
+
+{% macro register(label) %}
+  <div class="form-group">
+      <button name = "__register__" class="btn btn-block" type="submit" style="padding-right: 10px;background-color: #e78a07;color: #fff">{{ label }}</button>
+  </div>
+{% endmacro %}
+
+<!-- All kind of submit from template -->
+{% macro submit(label , icon) %}
+  <div class="form-group">
+      <button name = "submit" class="btn btn-block w-100" type="submit" style="padding-right: 10px;background-color: #288d03;color: white;margin-top:7px">{% if icon != false %}<i class="{{ icon }} "></i>{% endif %} {{ label }}</button>
+  </div>
+{% endmacro %}
+
+{% macro button( href , label , class , id ) %}
+  <button type = "submit" id = "{{ id }}" class = "btn {{ class }}">
+    <a href="{{ href }}">{{ label }}</a>
+  </button>
+{% endmacro %}
+
+{% macro select(name , label , value , content ) %}
+  <div class="form-group">
+      <label>{{ label }}</label>
+      <select class="custom-select selecteur" name="{{ name }}" required>
+        <option value="{{ value }}">{{ content }}</option>
+      </select>
+  </div>
+{% endmacro %}
+
+{% macro search_field( name , name_submit , placeholder , class) %}
+  <div class="p-1 bg-light rounded rounded-pill shadow-sm mb-4 {{ class }}">
+    <div class="input-group" id="searchbar">
+        <input type="search" name="{{ name }}" placeholder="{{ placeholder }}" class="form-control border-0 bg-light" id="recherchedata" onkeyup="Rechinfodatas()">
+        <div class="input-group-append">
+            <button id="button-addon1" name="{{ name_submit }}" type="submit" class="btn btn-link text-dark"><i class="icon icon-search"></i></button>
+        </div>
+    </div>
+  </div>
+{% endmacro %}
+
+{% macro input_search(name_searchbar , name_submit , placeholder , class) %}
+  <form method="GET">
+    <div class="p-1 rounded mb-4 {{ class }}">
+      <div class="input-group" id="searchbar">
+          <input type="search" name="{{ name_searchbar }}" placeholder="{{ placeholder }}" class="form-control border-0" id="recherchedata" onkeyup="Rechinfodatas()">
+          <div class="input-group-append">
+              <button id="button-addon1" name="{{ name_submit }}" type="submit" class="btn btn-link text-dark"><i class="fa fa-search"></i></button>
+          </div>
+      </div>
+    </div>
+  </form>
+{% endmacro %}
+
+{% macro textarea_field(name , label , indications ) %}
+  <div class="form-group g-3">
+    <label class="form-label">{{ label }}</label>
+    <textarea class="form-control textarea" rows="3" name="{{ name }}" id="inputlarge" onpaste="return false" required></textarea>
+    <div class="invalid-feedback">{{ indications }}</div>
+  </div>
+{% endmacro %}
+
+{% macro import_field(name , id , format , label) %}
+    <label class="form-label">{{ label }}</label><br>
+    <input type="file" name="{{ name }}" id="{{ id }}" accept="{{ format }}" required>
+    <div class="invalid-feedback">Ce champs est obligatoire!!!</div>
+    <hr>
+{% endmacro %}
+
+{% macro radio( name , label , required ) %}
+  <div class="form-check">
+    <input class="form-check-input" name="{{ name }}" type="checkbox" {% if required != false %} required {% endif %}  >
+    <label class="form-check-label" for="flexCheckChecked">{{ label }}</label>
+  </div>
+{% endmacro %}  
+
+{% macro loader() %}
+  <div class="loaderpage" id="loaderdatas"></div>
+{% endmacro %}

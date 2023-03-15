@@ -1,0 +1,36 @@
+
+{% macro breadcrumb_field( first_href , second_title , second_href , third_title , third_href ) %}
+
+    <ol class="breadcrumb breadcrumb-arrow">
+
+        {% if second_title == false and second_href == false and third_title == false and third_href == false %} 
+             <li  class="first"><a href="{{ first_href }}"> ADMINISTRATION </a></li>
+        {% endif %}
+
+        {% if second_title != false and second_href == false and third_title == false and third_href == false %} 
+             <li  class="first"><a href="{{ first_href }}"> ADMINISTRATION </a></li>
+        {% endif %} 
+
+        {% if second_title != false and second_href == false and third_title == false and third_href == false %} 
+             <li  class="active"><span>{{ second_title }}</span></li>
+        {% endif %}                
+
+        {% if second_title != false and second_href != false and third_title != false and third_href == false %} 
+             <li  class="second"><a href="{{ first_href }}"> ADMINISTRATION </a></li>
+        {% endif %} 
+
+        {% if second_title != false and second_href != false and third_title != false and third_href == false %} 
+             <li  class="first"><a href="{{ second_href }}"> {{ second_title }} </a></li>
+        {% endif %}   
+
+        {% if second_title != false and second_href != false and third_title != false and third_href == false %} 
+             <li  class="active"><span>{{ third_title }}</span></li>
+        {% endif %}                       
+        
+
+        {% if second_title != false and second_href != false and third_title != false and third_href != false %} 
+            <li class="active"><span>{{ third_title }}</span></li>
+        {% endif %}   
+    </ol>  
+    
+{% endmacro %}}

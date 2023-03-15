@@ -1,0 +1,46 @@
+body {
+    font-family: 'Open Sans', helvetica, Arial, sans-serif;
+    font-weight: 300;
+    line-height: 1.6em;
+    text-align: center;
+}
+
+.titlesite {
+    background: #333333;
+    color: #ffffff;
+    padding: 5px 0px;
+    margin-top: 150px;
+}
+
+h1 {
+    font-size: 170px;
+    font-weight: 100px;
+}
+
+h4 {
+    color: #253858;
+    margin-bottom: .8rem;
+    position: relative;
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.5rem;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    color: rgb(113, 120, 126);
+    font-family: 'Lato', sans-serif;
+}
+
+.error-text a {
+    text-decoration: none;
+    background-color: rgb(2, 168, 43);
+    padding: 10px 40px;
+    color: #ffffff;
+    border-radius: 40px;
+}

@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+    <head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>{% block title %}{% endblock %}</title>
+        <link href="{{ __css('bootstrap') }}" rel="stylesheet">
+        <link href="{{ __cssfont('font-awesome-min') }}" rel="stylesheet" type="text/css">
+        <link href="{{ __cssiconfont('icofont.min') }}" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" type="text/css" href="{{ __css('default.erreur.style') }}">
+    </head>
+    <body>
+        {% block content %}{% endblock %}
+    </body>
+</html>

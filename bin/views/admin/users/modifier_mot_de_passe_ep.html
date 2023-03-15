@@ -1,0 +1,9 @@
+{% extends layouts %}{% from breadcrumb import breadcrumb_field %}{% from message import alert_msg %} {% from forms import input_field , loader , submit %} {% block content %} {{ alert_msg( reponse , alert ) }} {{ breadcrumb_field( path.dashboard() ,
+'MODIFIER MON MOT DE PASSE' )}}
+<form class="validateforms" method="post" novalidate id="datasform">
+    <div class="row g-3">
+        {{ loader() }}{{ __csrf() }} {{ input_field('ancienmdp' , 'Ancien mot de passe' , 'password' , 'Entrez votre ancien mot de passe et continuer') }} {{ input_field('newmdp' , 'Votre nouveau mot de passe' , 'password' , 'Entrez nouveau mot
+        de passe et continuer' ) }} {{ input_field('confirmmdp' , 'Confirmer votre mot de passe' , 'password' , 'Confirmer votre mot de passe et continuer' ) }} {{ submit('Changer votre mot de passe' ) }}
+    </div>
+</form>
+{% endblock %}

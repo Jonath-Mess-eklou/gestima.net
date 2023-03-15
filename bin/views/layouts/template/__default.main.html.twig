@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="Author" LANG="fr" CONTENT="{{ __msg('author') }}">
+    <meta name="description" content="<p>{{ __msg('description') }}</p>"> 
+    <meta name="keywords" content="{{ __msg('keywords') }}" />
+    <meta name="language" content="{{ __msg('language') }}">
+    <meta name="Revisit-after" CONTENT="15">
+    <meta name="robots" content="Index, Follow">
+    <link href="{{ __css('bootstrap.min') }}" rel="stylesheet">
+    <link href="{{ __cssfont('font-awesome-min') }}" rel="stylesheet" type="text/css">
+    <link href="{{ __cssiconfont('icofont.min') }}" rel="stylesheet" type="text/css">
+    <link href="{{ __css('aos') }}" rel="stylesheet">
+    <link href="{{ __css('default.main.style') }}" rel="stylesheet">
+    <link rel="icon" href="{{ __img('logo.png') }}">
+    <title>{{ __msg('site-title') }}</title>
+  </head>
+    <body>
+      {{ include('layouts/display/__header.html.html') }}
+        {% block content %}{% endblock %}
+      {{ include('layouts/display/__footer.html.html') }}
+      <div class="loader"><div class="tools_loader" id="loader-1"></div></div>
+      <script src="{{ __js('jquery') }}"></script><script src="{{ __js('bootstrap-min') }}"></script><script src="{{ __js('aos') }}"></script><script src="{{ __js('main') }}"></script><script>jQuery(window).load(function(){ jQuery(".loader").fadeOut("200"); });</script><script>$(".loaderpage").hide();</script><script type="text/javascript">$(document).ready(function(){$('#datasform').submit(function() {$('#loaderdatas').show(); return true;});});</script>
+    </body>
+</html>
+

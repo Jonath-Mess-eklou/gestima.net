@@ -1,0 +1,48 @@
+{% extends layouts %} {% block content %}
+<div class="container-fluid maindashboard">
+    <div class="row">
+        <div class="col-lg-8 mb-8">
+            <div class="row">
+                <div class="col-lg-6 mb-6">
+                    <div class="card dashboard_card">
+                        <h4 class="card-header text-light"> <i class="bi bi-gear"></i> GROUPE D'UTILISATEUR</h4>
+                        <div class="card-body">
+                            <p class="card-text" id="number_card"><strong>{{ 3|strpad(2,0) }}</strong></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mb-6">
+                    <div class="card dashboard_card">
+                        <h4 class="card-header text-light"> <i class="bi bi-gear"></i> UTILISATEURS</h4>
+                        <div class="card-body">
+                            <p class="card-text" id="number_card"><strong>{{ count.count_all_users()|strpad(2,0) }}</strong></p>
+                        </div>
+                    </div>
+                </div>                
+            </div>
+        </div> 
+        <div class="col-lg-4 mb-4">
+            <div class="row">
+                <div class="col-lg-12 mb-12">
+                    <div class="card onathermenu">
+                        <div class="card-body">
+                            <h5 class="card-title">Actions r&eacute;centes</h5>
+                            {% for select in select.recents_actions() %}
+                            <div class="activity">
+                                <div class="activity-item d-flex">
+                                    <div class="activite-label">{{ select.dateactions|e|date('d/m/Y H:i:s') }}</div>
+                                    <i class='bi bi-clock activity-badge text-white align-self-start'></i>
+                                    <div class="activity-content">
+                                        {{ select.libactions|e }}
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>    
+        </div> 
+    </div>     
+</div>
+{% endblock %}

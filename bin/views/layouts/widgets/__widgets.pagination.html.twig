@@ -1,0 +1,20 @@
+{% macro pagination_field( pagecourante , pagestotal , effectif_total ) %}
+    <div class="pagination">
+        {% if pagecourante>1 %}<a href="?_p={{ pagecourante-1 }}">Pr&eacute;c&eacute;dent</a>{% endif %}
+        {% if pagecourante>1 %}<a href="?_p=1">1</a>{% endif %}
+        {% if pagecourante>4 %}<a href="?_p=2">2</a>{% endif %}
+        {% if pagecourante>4 %}<a href="?_p=3">3</a>{% endif %}
+        {% if pagecourante>2 %}<a href="#">...</a>{% endif %}
+        {% if pagecourante>15 %}<a href="?_p=11">11</a>{% endif %}
+        {% if pagecourante>15 %}<a href="?_p=12">12</a>{% endif %}
+        {% if pagecourante>15 %}<a href="?_p=13">13</a>{% endif %}
+        {% if pagecourante>15 %}<a href="#">...</a>{% endif %}
+        {% if pagestotal>=1 %}<a href="?_p={{ pagecourante }}">{{ pagecourante }}</a>{% endif %}
+        {% if pagestotal>=2 %}<a href="?_p={{ pagecourante + 1 }}">{{ pagecourante + 1 }}</a>{% endif %}
+        {% if pagestotal>=3 %}<a href="?_p={{ pagecourante + 2 }}">{{ pagecourante + 2 }}</a>{% endif %}
+        {% if pagestotal>=4 %}<a href="?_p={{ pagecourante + 3 }}">{{ pagecourante + 3 }}</a>{% endif %}
+        {% if pagestotal>=5 %}<a href="?_p={{ pagecourante + 4 }}">{{ pagecourante + 4 }}</a>{% endif %}
+        {% if pagecourante < pagestotal %}<a href="?_p={{ pagecourante + 1 }}">Suivant</a>{% endif %}
+        <a href="#">Total : {{ effectif_total }}</a>
+    </div>
+{% endmacro %}

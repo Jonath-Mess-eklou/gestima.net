@@ -1,0 +1,22 @@
+{% extends layouts %}{% from breadcrumb import breadcrumb_field %} {% from message import alert_msg %}{% from forms import import_field , loader , submit %} {% block content %} {{ breadcrumb_field( path.dashboard() ,
+'IMPORTATION DES UTILISATEURS' )}} {{ alert_msg( reponse , alert ) }}
+<form class="formdaicg" method="post" novalidate name="frmExcelImport" enctype="multipart/form-data" id="datasform">
+    {{ loader() }}{{ __csrf() }}
+    <div class="form-group">
+        <label class="form-label">Groupe d'utilisateur</label>
+        <select class="form-select custom-select selecteur" name="{{ 'type_utilisateur' }}" required>
+            {% if state ==1 %}    
+                {% for data in data.user() %}
+                    {% set counter = (counter | default (0))+1 %}
+                        <option value="{{ counter|e }}">{{ data }}</option>
+                {% endfor %}
+            {% else %}  
+                {% for data in data.other_user_list() %}
+                {% set counter = (counter | default (1))+1 %}
+                    <option value="{{ counter|e }}">{{ data }}</option>
+                {% endfor %} 
+            {% endif %}     
+        </select>
+    </div> {{ import_field('file', 'file' , '.xls,.xlsx' ) }}{{ submit('Importation des utilisateurs' ) }}
+</form>
+{% endblock %}

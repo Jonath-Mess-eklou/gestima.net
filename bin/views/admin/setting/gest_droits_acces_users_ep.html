@@ -1,0 +1,40 @@
+{% extends layouts %}{% from breadcrumb import breadcrumb_field %} {% from message import alert_msg %}{% from form import button , loader %}{% from message import alert_msg %} {% block content %}{{ breadcrumb_field( path.dashboard('admin/') ,'ATTRIBUTION
+DES DROITS AUX UTILISATEURS' )}}
+<div class="container">
+    {{ alert_msg( reponse , alert ) }}
+    <div class="row" style="margin-top: 20px;">
+        <div class="col-md-12 text-center">
+            <div class="outer-form">
+                <form method="post" id="datasform">
+                    <table class="table-striped table table-bordered tableaffichage">
+                        {{ loader() }}{{ __csrf() }}
+                        <thead>
+                            <tr>
+                                <th class="head">No</th>
+                                <th class="head">GROUPES UTILISATEURS</th>
+                                <th class="head">ACTIONS</th>
+                            </tr>
+                        </thead>
+                        {% for select in select %} {% set counter = (counter | default (0))+1 %}
+                        <tbody>
+                            <tr>
+                                <td style="width: 3%">{{ counter|e }}</td>
+                                <td class="text-uppercase" style="width: 20%">{{ select }}</td>
+                                <td style="width: 50%">
+                                    <button type="btn" name="__edit__" rel="tooltip" class="btn btn-success btn-just-icon btn-sm">
+                                        <a style="text-decoration:none;color:#fff;" href="{{ __pathId( 'setting' , 'ajouter_droits_acces_utilisateur' , '?_see=' , counter|e ) }}"><i class="icofont-key"></i> Ajouter des habilitations</a>
+                                    </button>
+                                    <button type="btn" name="__edit__" rel="tooltip" class="btn btn-primary btn-just-icon btn-sm">
+                                        <a style="text-decoration:none;color:#fff;" href="{{ __pathId( 'setting' , 'liste_gest_droits_users' , '?_see=' , counter|e ) }}"><i class="icofont-eye"></i> Liste des habilitations</a>
+                                    </button>
+                                    <button type="btn" name="__deleted__" rel="tooltip" class="btn btn-danger btn-just-icon btn-sm" value="{{ counter|e }}"><i class="icofont-bin"></i> Vider ses habilitations</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                        {% endfor %}
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+</div> {% endblock %}
