@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
+
     <title>site officiel desps</title>
     <link href="views/layouts/display/assets/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link rel="stylesheet" href="views/layouts/display/assets/style.css">
@@ -43,11 +43,13 @@
         </div>
     </header>-->
 
-       <nav class="navbar navbar-expand-sm navbar-dark bg-dark ">
+    <!-- ########################## HAUT DE PAGE ########################### -->
+
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark ">
     <!-- <nav class="navbar navbar-expand-lg bg-body-tertiary">-->
         <div class="container-fluid">
           <a class="navbar-brand nav-item" href="#">
-            <img src="views/layouts/display/assets/img/armoirie.png" width="100%" height="100%"></a>
+            <img src="bin/views/layouts/display/assets/img/armoirie.png" width="100px" height="100px"></a>
           
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
@@ -84,7 +86,7 @@
           </div>
         </div>
       </nav>
-
+      
      <!-- <header class="header">
       <ul class="dropdown-menu">
         <li><h1 class="dropdown-header">Dropdown header</h1></li>
@@ -92,18 +94,20 @@
         <li><a class="dropdown-item" href="#">Another action</a></li>
       </ul></header>-->
 
+      <!-- LE HEADER -->
+      <div class="container-fluid" type="border-solid">
       <header class="header">
         <div class="overlay"></div>
         <div class="container text-black text-center">
             <h4 class="mb-0">Le site officiel de la </h4>
             <h1 class="container-fluid">
                 <a class="navbar-brand nav-item" href="#">
-                  <img src="views/layouts/display/assets/img/logo_desps.png" width="15%" height="15%"></a>
-                </h1>
+                  <img src="{{ __img('logo_desps.png') }}" width="300px" height="109px"></a>
+            </h1>
             <p class="lead">Nous faisons de l'education notre priorite</p>
         </div>
-    </header>
-    <script src="views/layouts/display/assets/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+      </header>
+      </div>
     
 </body>
 </html>
