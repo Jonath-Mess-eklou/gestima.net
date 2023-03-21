@@ -1,0 +1,5 @@
+creation de nouveau dossier assets dans le layout contenue dans le dossier view
+ce dossier permet l'appel de bootstrap en local
+presence d'une image au niveau du header mais l'image ne s'affiche pas.
+depuis 1h je suis dessus c'est a 5h que je me resigne pour recuperer un peu puis aller au bureau.
+merci de m'aider a trouver une solution.
