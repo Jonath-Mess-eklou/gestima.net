@@ -20,8 +20,8 @@ class errors extends twig
     {
         $this->paths = new \bin\epaphrodite\path\paths;
         $this->layouts = new \bin\epaphrodite\env\layouts;
-        $this->msg = new \bin\epaphrodite\define\text_messages;
         $this->session = new \bin\epaphrodite\auth\session_auth;
+        $this->msg = new \bin\epaphrodite\define\SetTextMessages;
     }
 
     /**

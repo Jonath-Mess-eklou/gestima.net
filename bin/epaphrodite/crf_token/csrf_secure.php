@@ -18,8 +18,8 @@ class csrf_secure
     function __construct()
     {
         $this->request = new process;
-        $this->session = new session_auth();
-        $this->messages = new \bin\epaphrodite\define\text_messages;
+        $this->session = new session_auth;
+        $this->messages = new \bin\epaphrodite\define\SetTextMessages;
     }
 
     /**
@@ -96,17 +96,17 @@ class csrf_secure
      * @param string $cookies
      * @return void
      */
-    public function get_csrf($cookies)
+    public function get_csrf($key)
     {
 
-        if ($this->secure() === 0) {
+        if ($this->secure() == 0) {
 
-            $this->insert_bd_token($cookies);
+            $this->insert_bd_token($key);
 
             return false;
         } else {
 
-            return $this->secure();
+            return $this->update_bd_token($key);
         }
     }
 }

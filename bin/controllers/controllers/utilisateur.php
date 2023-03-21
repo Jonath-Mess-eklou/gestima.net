@@ -2,10 +2,10 @@
 
 namespace bin\controllers\controllers;
 
-use bin\controllers\render\twig;
 use bin\controllers\render\errors;
+use bin\epaphrodite\heredia\SwtchersHeredia;
 
-class utilisateur_app extends twig
+class utilisateur_app extends SwtchersHeredia
 {
 
     /**
@@ -14,7 +14,6 @@ class utilisateur_app extends twig
      * @var \bin\epaphrodite\path\paths $url_path
      * @var \bin\database\users_right\datas_array $datas
      * @var \bin\epaphrodite\auth\session_auth $path_session
-     * @var \bin\epaphrodite\crf_token\token_csrf $csrf
      * @var \bin\epaphrodite\env\layouts $layouts
      * @var \bin\epaphrodite\define\text_messages $msg
      * @var \bin\database\requests\select\sql_infosgeneral $infos 
@@ -51,11 +50,10 @@ class utilisateur_app extends twig
         $this->datas = new \bin\database\datas\datas;
         $this->path = new \bin\epaphrodite\path\paths;
         $this->layouts = new \bin\epaphrodite\env\layouts;
-        $this->msg = new \bin\epaphrodite\define\text_messages;
-        $this->csrf = new \bin\epaphrodite\crf_token\token_csrf;
         $this->count = new \bin\database\requests\select\count;
         $this->session = new \bin\epaphrodite\auth\session_auth;
         $this->get_id = new \bin\database\requests\select\get_id;
+        $this->msg = new \bin\epaphrodite\define\SetTextMessages;
         $this->select = new \bin\database\requests\select\select;
         $this->delete = new \bin\database\requests\delete\delete;
         $this->insert = new \bin\database\requests\insert\insert;
@@ -63,16 +61,28 @@ class utilisateur_app extends twig
         $this->acces_path = new \bin\database\requests\select\auth;
     }
 
-    public function epaphrodite($html)
+    /**
+     * **********************************************************************************************
+        * Rooter constructor
+        *
+        * @return \bin\controllers\render\rooter
+    */
+    private static function rooter(): \bin\controllers\render\rooter
+    {
+        return new \bin\controllers\render\rooter;
+    }
+
+    protected function epaphrodite($html)
     {
 
-        if (file_exists(_DIR_VIEWS_ . _DIR_ADMIN_TEMP_ . $html . '.html')) {
+        SELF::directory( $html , true) === false ? $this->errors->error_404() : NULL;
 
 
             /**
              * @param string $alert
              */
             $alert = '';
+            $ans = '';
 
             /**
              * Modifier infos personnel des utilisateurs
@@ -81,7 +91,7 @@ class utilisateur_app extends twig
              * @param array $array
              * @return mixed
              */
-            if ($html === "users/modifier_infos_users_ep" && $this->get_id->autorisations('uinfos') === true || $html === "users/modifier_infos_users_ep" && $this->session->type() === 1) {
+            if ( SELF::SwitcherPages( 'users/modifier_infos_users' , $html ) === true ) {
 
                 $login = $this->session->login();
 
@@ -94,33 +104,16 @@ class utilisateur_app extends twig
 
                     $this->result = $this->update->infos_perso($_POST['nomprenom'], $_POST['email'], $_POST['contact']);
                     if ($this->result === true) {
-                        $this->ans = $this->msg->answers('succes');
+                        $ans = $this->msg->answers('succes');
                         $alert = 'alert-success';
                     }
                     if ($this->result === false) {
-                        $this->ans = $this->msg->answers('erreur');
+                        $ans = $this->msg->answers('erreur');
                         $alert = 'alert-danger';
                     }
                 }
 
-                $this->render(
-                    _DIR_ADMIN_TEMP_ . $html,
-                    [
-                        'alert' => $alert,
-                        'env' => $this->env,
-                        'path' => $this->path,
-                        'data' => $this->datas,
-                        'reponse' => $this->ans,
-                        'messages' => $this->msg,
-                        'forms' => $this->layouts->forms(),
-                        'message' => $this->layouts->msg(),
-                        'login' => $this->session->nomprenoms(),
-                        'breadcrumb' => $this->layouts->breadcrumbs(),
-                        'layouts' => $this->layouts->admin($this->session->type()),
-                        'select' => $this->get_id->get_infos_users_by_login($login),
-                        'layouts' => $this->layouts->admin($this->session->type())
-                    ]
-                );
+                SELF::rooter()->target( _DIR_ADMIN_TEMP_ . $html )->content( [ 'reponse' => $ans, 'alert' => $alert, 'env' => $this->env, 'data' => $this->datas, 'select' => $this->get_id->get_infos_users_by_login($login) ],true)->get();
             }
 
             /**
@@ -130,42 +123,26 @@ class utilisateur_app extends twig
              * @param array $array
              * @return mixed
              */
-            elseif ($html === "users/modifier_mot_de_passe_ep" && $this->get_id->autorisations('umdp') === true || $html === "users/modifier_mot_de_passe_ep" && $this->session->type() === 1) {
+            if (  SELF::SwitcherPages( 'users/modifier_mot_de_passe' , $html ) === true ) {
 
                 if (isset($_POST['submit'])) {
 
                     $this->result = $this->update->changer_mdp($_POST['ancienmdp'], $_POST['newmdp'], $_POST['confirmmdp']);
                     if ($this->result === 1) {
-                        $this->ans = $this->msg->answers('no-identic');
+                        $ans = $this->msg->answers('no-identic');
                         $alert = 'alert-danger';
                     }
                     if ($this->result === 2) {
-                        $this->ans = $this->msg->answers('no-identic');
+                        $ans = $this->msg->answers('no-identic');
                         $alert = 'alert-danger';
                     }
                     if ($this->result === 3) {
-                        $this->ans = $this->msg->answers('mdpwrong');
+                        $ans = $this->msg->answers('mdpwrong');
                         $alert = 'alert-danger';
                     }
                 }
 
-                $this->render(
-                    _DIR_ADMIN_TEMP_ . $html,
-                    [
-                        'alert' => $alert,
-                        'env' => $this->env,
-                        'path' => $this->path,
-                        'data' => $this->datas,
-                        'reponse' => $this->ans,
-                        'messages' => $this->msg,
-                        'menus' => $this->get_id,
-                        'forms' => $this->layouts->forms(),
-                        'message' => $this->layouts->msg(),
-                        'login' => $this->session->nomprenoms(),
-                        'breadcrumb' => $this->layouts->breadcrumbs(),
-                        'layouts' => $this->layouts->admin($this->session->type())
-                    ]
-                );
+                SELF::rooter()->target( _DIR_ADMIN_TEMP_ . $html )->content( [ 'reponse' => $ans, 'alert' => $alert, 'env' => $this->env, 'data' => $this->datas, ],true)->get();
             }
 
             /**
@@ -175,7 +152,7 @@ class utilisateur_app extends twig
              * @param array $array
              * @return mixed
              */
-            elseif ($html === "users/import_des_utilisateurs_ep" && $this->get_id->autorisations('importusers') === true || $html === "users/import_des_utilisateurs_ep" && $this->session->type() === 1) {
+            if ( SELF::SwitcherPages( 'users/import_des_utilisateurs' , $html ) === true ) {
 
                 $state = $this->session->type() === 1 ? true : false;
 
@@ -204,43 +181,27 @@ class utilisateur_app extends twig
                                         $this->result = $this->insert->add_users($codeutilisateur, $_POST['type_utilisateur']);
 
                                         if ($this->result === true) {
-                                            $this->ans = $this->msg->answers('succes');
+                                            $ans = $this->msg->answers('succes');
                                             $alert = 'alert-success';
                                         }
                                         if ($this->result === false) {
-                                            $this->ans = $this->msg->answers('erreur');
+                                            $ans = $this->msg->answers('erreur');
                                             $alert = 'alert-danger';
                                         }
                                     }
                                 }
                             }
                         } else {
-                            $this->ans = $this->msg->answers('noformat');
+                            $ans = $this->msg->answers('noformat');
                             $alert = 'alert-danger';
                         }
                     } else {
-                        $this->ans = $this->msg->answers('fileempty');
+                        $ans = $this->msg->answers('fileempty');
                         $alert = 'alert-danger';
                     }
                 }
 
-                $this->render(
-                    _DIR_ADMIN_TEMP_ . $html,
-                    [
-                        'alert' => $alert,
-                        'state' => $state,
-                        'env' => $this->env,
-                        'path' => $this->path,
-                        'data' => $this->datas,
-                        'reponse' => $this->ans,
-                        'messages' => $this->msg,
-                        'forms' => $this->layouts->forms(),
-                        'message' => $this->layouts->msg(),
-                        'login' => $this->session->nomprenoms(),
-                        'breadcrumb' => $this->layouts->breadcrumbs(),
-                        'layouts' => $this->layouts->admin($this->session->type())
-                    ]
-                );
+                SELF::rooter()->target( _DIR_ADMIN_TEMP_ . $html )->content( [ 'state' => $state, 'reponse' => $ans, 'alert' => $alert, 'env' => $this->env, 'data' => $this->datas, ],true)->get();
             }
 
             /**
@@ -250,7 +211,7 @@ class utilisateur_app extends twig
              * @param array $array
              * @return mixed
              */
-            elseif ($html === "users/liste_des_utilisateurs_ep" && $this->get_id->autorisations('listusers') === true || $html === "users/liste_des_utilisateurs_ep" && $this->session->type() === 1) {
+            if (  SELF::SwitcherPages( 'users/liste_des_utilisateurs' , $html ) === true ) {
 
                 $page = isset($_GET['_p']) ? $_GET['_p'] : 1;
                 $Nbreligne = 100;
@@ -262,11 +223,11 @@ class utilisateur_app extends twig
 
                     $this->result = $this->update->modifier_etat_users($_POST['__etat__']);
                     if ($this->result === true) {
-                        $this->ans = $this->msg->answers('succes');
+                        $ans = $this->msg->answers('succes');
                         $alert = 'alert-success';
                     }
                     if ($this->result === false) {
-                        $this->ans = $this->msg->answers('error');
+                        $ans = $this->msg->answers('error');
                         $alert = 'alert-danger';
                     }
                 }
@@ -278,11 +239,11 @@ class utilisateur_app extends twig
 
                     $this->result = $this->update->reinitialiser_mdp_user($_POST['__reinit__']);
                     if ($this->result === true) {
-                        $this->ans = $this->msg->answers('succes');
+                        $ans = $this->msg->answers('succes');
                         $alert = 'alert-success';
                     }
                     if ($this->result === false) {
-                        $this->ans = $this->msg->answers('error');
+                        $ans = $this->msg->answers('error');
                         $alert = 'alert-danger';
                     }
                 }
@@ -300,34 +261,9 @@ class utilisateur_app extends twig
                     $list = $this->select->liste_users($page, $Nbreligne);
                 }
 
-                $this->render(
-                    _DIR_ADMIN_TEMP_ . $html,
-                    [
-                        'path' => $this->path,
-                        'env' => $this->env,
-                        'messages' => $this->msg,
-                        'csrf' => $this->csrf,
-                        'reponse' => $this->ans,
-                        'alert' => $alert,
-                        'data' => $this->datas,
-                        'pagecourante' => $page,
-                        'effectif_total' => $total,
-                        'forms' => $this->layouts->forms(),
-                        'message' => $this->layouts->msg(),
-                        'login' => $this->session->nomprenoms(),
-                        'pages_total' => ceil(($total) / $Nbreligne),
-                        'pagination' => $this->layouts->pagination(),
-                        'breadcrumb' => $this->layouts->breadcrumbs(),
-                        'layouts' => $this->layouts->admin($this->session->type()),
-                        'liste_users' => $list,
-                    ]
-                );
-            } else {
-                $this->errors->error_403();
-            }
-        } else {
-            $this->errors->error_404();
-        }
+                SELF::rooter()->target( _DIR_ADMIN_TEMP_ . $html )->content( [ 'reponse' => $ans, 'alert' => $alert, 'env' => $this->env, 'data' => $this->datas,'pagecourante' => $page, 'effectif_total' => $total,'pages_total' => ceil(($total) / $Nbreligne),'liste_users' => $list,],true)->get();
+
+            } 
     }
 }
 

@@ -1,0 +1,39 @@
+{
+    "name": "epaphrodite/epaphrodite-framework",
+    "description": "Epaphrodite-Framework est un framework developper en php. Qui a pour objectif de mettre en place un système simple facile à manipuler et qui s'inscrit dans le monde du libre",
+    "type": "projet",
+    "keywords": [
+        "epaphrodite",
+        "php",
+        "epaphrodite-framework"
+    ],
+    "license": "MIT",
+    "minimum-stability": "stable",
+    "support": {
+        "source": "https://github.com/ysrael-aime-ndri/epaphrodite-framework"
+    },
+    "autoload": {
+        "psr-4": {
+            "Epaphrodite\\EpaphroditeFramework\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Y'srael Aimé N'dri",
+            "email": "aimendrikonan@gmail.com",
+            "role": "Lead Developer"
+        }
+    ],
+    "require":{
+        "php": "8.2.*"
+    },
+    "require-dev": {
+        "twig/twig": "^3.5",
+        "phpoffice/phpspreadsheet": "^1.28",
+        "phpmailer/phpmailer": "^6.8",
+        "php-ai/php-ml": "^0.10.0",
+        "thiagoalessio/tesseract_ocr": "^2.12",
+        "guzzlehttp/guzzle": "^7.5",
+        "php": ">=8.1"
+    }
+}

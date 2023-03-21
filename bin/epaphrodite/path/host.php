@@ -15,7 +15,7 @@ class host
   private function domain()
   {
 
-    $this->domaine = "gestima.net";
+    $this->domaine = "epaphrodite-framework";
 
     return $this->domaine;
   }

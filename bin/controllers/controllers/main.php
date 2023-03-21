@@ -2,10 +2,10 @@
 
 namespace bin\controllers\controllers;
 
-use bin\controllers\render\twig;
 use bin\controllers\render\errors;
+use bin\epaphrodite\heredia\SwtchersHeredia;
 
-class Control extends twig
+class Control extends SwtchersHeredia
 {
     /**
      * *****************************************************************************************************************************
@@ -21,17 +21,14 @@ class Control extends twig
      * @var \bin\epaphrodite\env\layouts $layouts
      */
 
-    private $ans;
-    private $result;
     private $auth;
-    private $layouts;
-    private $paths;
     private $email;
     private $sms;
     private $env;
     private $msg;
     private $errors;
     private $session;
+    private $rooter;
 
     /**
      * *****************************************************************************************************************************
@@ -42,21 +39,29 @@ class Control extends twig
 
         $this->errors = new errors;
         $this->env = new \bin\epaphrodite\env\env;
-        $this->paths = new \bin\epaphrodite\path\paths;
-        $this->layouts = new \bin\epaphrodite\env\layouts;
         $this->sms = new \bin\epaphrodite\api\sms\send_sms;
         $this->auth = new \bin\database\requests\select\auth;
-        $this->msg = new \bin\epaphrodite\define\text_messages;
+        $this->msg = new \bin\epaphrodite\define\SetTextMessages;
         $this->session = new \bin\epaphrodite\auth\session_auth;
         $this->email = new \bin\epaphrodite\api\email\send_mail;
     }
 
+    /**
+     * **********************************************************************************************
+        * Rooter constructor
+        *
+        * @return \bin\controllers\render\rooter
+    */
+    private static function rooter(): \bin\controllers\render\rooter
+    {
+        return new \bin\controllers\render\rooter;
+    }
 
     protected function epaphrodite($html)
     {
-
-
-        if (file_exists(_DIR_VIEWS_ . _DIR_MAIN_TEMP_ . $html . '.html')) {
+    
+        SELF::directory( $html ) === false ? $this->errors->error_404() : NULL;
+        
             /**
              * *****************************************************************************************************************************
              * main index
@@ -65,15 +70,11 @@ class Control extends twig
              * @param array $array
              * @return mixed
              */
-            if ($html === "index_ep") {
-                $this->render(
-                    _DIR_MAIN_TEMP_ . $html,
-                    [
-                        'path' => $this->paths,
-                        'layouts' => $this->layouts->main(),
-                    ]
-                );
-            }
+           
+             if(SELF::SwitcherPages( 'index' , $html )===true){
+
+                SELF::rooter()->target( _DIR_MAIN_TEMP_ . $html )->content([NULL])->get();  
+             }
 
             /**
              * *****************************************************************************************************************************
@@ -83,36 +84,22 @@ class Control extends twig
              * @param array $array
              * @return mixed
              */
-            elseif ($html === "login_ep") {
+            if (SELF::SwitcherPages('login' , $html )===true) {
 
-                $this->ans = '';
                 $class = null;
+                $ans = '';
 
                 if (isset($_POST['submit'])) {
 
-                    $this->result = $this->auth->acces_manager($_POST['login'], $_POST['password']);
-                    if ($this->result === false) {
-                        $this->ans = $this->msg->answers('login-wrong');
+                    $result = $this->auth->UsersAuthManagers($_POST['login'], $_POST['password']);
+                    if ($result === false) {
+                        $ans = $this->msg->answers('login-wrong');
                         $class = "error";
                     }
                 }
 
-                $this->render(
-                    _DIR_MAIN_TEMP_ . $html,
-                    [
-                        'class' => $class,
-                        'path' => $this->paths,
-                        'reponse' => $this->ans,
-                        'form' => $this->layouts->forms(),
-                        'layouts' => $this->layouts->main(),
-                    ]
-                );
-            } else {
-                $this->errors->error_404();
-            }
-        } else {
-            $this->errors->error_404();
-        }
+                SELF::rooter()->target(_DIR_MAIN_TEMP_. $html)->content(['class' => $class,'reponse' => $ans])->get(); 
+            } 
     }
 }
 

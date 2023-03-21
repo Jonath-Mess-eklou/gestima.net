@@ -14,7 +14,7 @@ class gettokenvalue
 
     public function userconnecter_token()
     {
-        $this->messages = new \bin\epaphrodite\define\text_messages();
+        $this->messages = new \bin\epaphrodite\define\SetTextMessages;
         $this->tokensession = isset($_COOKIE[$this->messages->answers('token_name')]) ? $_COOKIE[$this->messages->answers('token_name')] : NULL;
 
         return $this->tokensession;

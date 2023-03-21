@@ -2,24 +2,15 @@
 
 namespace bin\database\requests\select;
 
-use \bin\epaphrodite\path\paths;
-use bin\database\config\process;
-use bin\epaphrodite\env\gestcookies;
-use bin\epaphrodite\env\verify_chaine;
-use bin\epaphrodite\auth\session_auth;
-use bin\epaphrodite\define\text_messages;
-use bin\epaphrodite\crf_token\csrf_secure;
-use bin\database\requests\insert\if_not_exist;
-
 
 class auth
 {
 
   private $path;
-  private $star;
   private $msg;
   private $secure;
-  private $userbd;
+  private $session;
+  private $Started;
   private $gethost;
   private $process;
   private $if_exist;
@@ -31,15 +22,14 @@ class auth
    */
   function __construct()
   {
-
-    $this->path = new paths;
-    $this->process = new process;
-    $this->star = new gestcookies;
-    $this->msg = new text_messages;
-    $this->secure = new csrf_secure;
-    $this->userbd = new session_auth;
-    $this->if_exist = new if_not_exist;
-    $this->verify_if_is_correct = new verify_chaine;
+    $this->path = new \bin\epaphrodite\path\paths;
+    $this->process = new \bin\database\config\process;
+    $this->session = new \bin\epaphrodite\auth\HardSession;
+    $this->msg = new \bin\epaphrodite\define\SetTextMessages;
+    $this->secure = new \bin\epaphrodite\crf_token\csrf_secure;
+    $this->Started = new \bin\epaphrodite\auth\SetUsersCookies;
+    $this->if_exist = new \bin\database\requests\insert\if_not_exist;
+    $this->verify_if_is_correct = new \bin\epaphrodite\env\verify_chaine;
   }
 
   /**
@@ -112,21 +102,21 @@ class auth
    * @param string $motpasse
    * @return bool
    */
-  public function acces_manager(string $login, string $motpasse)
+  public function UsersAuthManagers(string $login, string $motpasse)
   {
 
     if (($this->verify_if_is_correct->only_number_and_character($login, $nbre = 12)) === false) {
 
-      $users_datas = $this->verify_if_user_exist($login);
+      $result = $this->verify_if_user_exist($login);
 
-      if (!empty($users_datas)) {
+      if (!empty($result)) {
 
         if (!empty($motpasse)) {
 
           $cryptermdp = hash('gost', $motpasse);
         }
 
-        $hashpassword = $users_datas[0]["mdpuser_bd"];
+        $hashpassword = $result[0]["mdpuser_bd"];
 
         $loginPassword = 0;
 
@@ -139,23 +129,13 @@ class auth
 
           session_start();
 
-          $_SESSION["id"] = $users_datas[0]["iduser_bd"];
-
-          $_SESSION["login"] = $users_datas[0]["loginuser_bd"];
-
-          $_SESSION["type"] = $users_datas[0]["type_user_bd"];
-
-          $_SESSION["nom_prenoms"] = $users_datas[0]["nomprenoms_user"];
-
-          $_SESSION["contact"] = $users_datas[0]["contact_user"];
-
-          $_SESSION["email"] = $users_datas[0]["email_user"];
+          $this->session->get( $result[0]["iduser_bd"] , $result[0]["loginuser_bd"] , $result[0]["nomprenoms_user"] , $result[0]["contact_user"] , $result[0]["email_user"] , $result[0]["type_user_bd"]);
 
           $this->gethost = $this->path->dashboard();
 
-          if ($this->secure->get_csrf($_COOKIE[$this->msg->answers('token_name')]) !== 0) {
+          if ($this->secure->get_csrf($this->key()) !== 0) {
 
-            $this->star->set_user_cookies($this->secure->secure());
+            $this->Started->set_user_cookies($this->key());
           }
 
           header("Location: $this->gethost ");
@@ -169,4 +149,13 @@ class auth
       return false;
     }
   }
+
+  /**
+   * Current cookies value
+   */
+  private function key():string
+  {
+    return $_COOKIE[$this->msg->answers('token_name')];
+  }
+
 }
