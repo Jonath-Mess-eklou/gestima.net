@@ -104,7 +104,7 @@ class session_auth
     public function token_csrf()
     {
 
-        $this->messages = new \bin\epaphrodite\define\text_messages();
+        $this->messages = new \bin\epaphrodite\define\SetTextMessages;
 
         $token_csrf = !empty($_COOKIE[$this->messages->answers('token_name')]) ? $_COOKIE[$this->messages->answers('token_name')] : NULL;
 

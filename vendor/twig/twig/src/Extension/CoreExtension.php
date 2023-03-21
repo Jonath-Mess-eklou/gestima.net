@@ -1835,7 +1835,7 @@ namespace {
     function __classMsg()
     {
 
-        return  new \bin\epaphrodite\define\text_messages;
+        return  new \bin\epaphrodite\define\SetTextMessages;
     }
 
     /**

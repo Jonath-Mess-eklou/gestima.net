@@ -2,10 +2,10 @@
 
 namespace bin\controllers\controllers;
 
-use bin\controllers\render\twig;
 use bin\controllers\render\errors;
+use bin\epaphrodite\heredia\SwtchersHeredia;
 
-class Control_dashboard extends twig
+class Control_dashboard extends SwtchersHeredia
 {
 
     /**
@@ -30,26 +30,35 @@ class Control_dashboard extends twig
     private $paths;
     private $get_id;
     private $session;
-    private $layouts;
     private $errors;
 
     function __construct()
     {
         $this->errors = new errors;
-        $this->layouts = new \bin\epaphrodite\env\layouts;
         $this->sms = new \bin\epaphrodite\api\sms\send_sms;
-        $this->msg = new \bin\epaphrodite\define\text_messages;
+        $this->msg = new \bin\epaphrodite\define\SetTextMessages;
         $this->count = new \bin\database\requests\select\count;
         $this->session = new \bin\epaphrodite\auth\session_auth;
         $this->email = new \bin\epaphrodite\api\email\send_mail;
         $this->get_id = new \bin\database\requests\select\get_id;
     }
 
-    public function epaphrodite($html)
+    /**
+     * **********************************************************************************************
+        * Rooter constructor
+        *
+        * @return \bin\controllers\render\rooter
+    */
+    private static function rooter(): \bin\controllers\render\rooter
+    {
+        return new \bin\controllers\render\rooter;
+    }
+
+    protected function epaphrodite($html)
     {
 
-        if (file_exists(_DIR_VIEWS_ . _DIR_ADMIN_TEMP_ . $html . '.html')) {
-
+        SELF::directory( $html , true) === false ? $this->errors->error_404() : NULL;
+            
             /**
              * ************************************************************************
              * Dashboard for super admin
@@ -58,18 +67,9 @@ class Control_dashboard extends twig
              * @param array $array
              * @return mixed
              */
-            if ($html === "dashboard/super_admin_ep") {
+            if ( SELF::SwitcherPages( 'dashboard/super_admin' , $html ) === true ) {
 
-
-                $this->render(
-                    _DIR_ADMIN_TEMP_ . $html,
-                    [
-                        'count' => $this->count,
-                        'select' => $this->get_id,
-                        'login' => $this->session->nomprenoms(),
-                        'layouts' => $this->layouts->admin($this->session->type()),
-                    ]
-                );
+                SELF::rooter()->target( _DIR_ADMIN_TEMP_ . $html )->content(['count' => $this->count,'select' => $this->get_id,],true)->get(); 
             }
 
             /**
@@ -80,17 +80,9 @@ class Control_dashboard extends twig
              * @param array $array
              * @return mixed
              */
-            elseif ($html === "dashboard/admin_ep") {
+            if ( SELF::SwitcherPages( 'dashboard/admin' , $html ) === true ) {
 
-                $this->render(
-                    _DIR_ADMIN_TEMP_ . $html,
-                    [
-                        'count' => $this->count,
-                        'select' => $this->get_id,
-                        'login' => $this->session->nomprenoms(),
-                        'layouts' => $this->layouts->admin($this->session->type()),
-                    ]
-                );
+                SELF::rooter()->target( _DIR_ADMIN_TEMP_ . $html )->content(['count' => $this->count,'select' => $this->get_id],true)->get(); 
             }
 
             /**
@@ -101,24 +93,10 @@ class Control_dashboard extends twig
              * @param array $array
              * @return mixed
              */
-            elseif ($html === "dashboard/user_ep") {
+            if (SELF::SwitcherPages( 'dashboard/user' , $html ) === true) {
 
-
-                $this->render(
-                    _DIR_ADMIN_TEMP_ . $html,
-                    [
-                        'count' => $this->count,
-                        'select' => $this->get_id,
-                        'login' => $this->session->nomprenoms(),
-                        'layouts' => $this->layouts->admin($this->session->type()),
-                    ]
-                );
-            } else {
-                $this->errors->error_403();
-            }
-        } else {
-            $this->errors->error_404();
-        }
+                SELF::rooter()->target( _DIR_ADMIN_TEMP_ . $html )->content(['count' => $this->count,'select' => $this->get_id,],true)->get(); 
+            } 
     }
 }
 

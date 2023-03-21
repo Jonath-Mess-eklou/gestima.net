@@ -1,15 +1,24 @@
 <?php return array(
     'root' => array(
-        'name' => 'gestima/gestima',
+        'name' => 'epaphrodite/epaphrodite-framework',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '9a03afe85a489a01ed4233bb69f36e615eb3150e',
+        'reference' => '5db00e07639bba10fd3d2f38646eb21acf1c7e7e',
         'type' => 'projet',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
         'dev' => true,
     ),
     'versions' => array(
+        'epaphrodite/epaphrodite-framework' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '5db00e07639bba10fd3d2f38646eb21acf1c7e7e',
+            'type' => 'projet',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'ezyang/htmlpurifier' => array(
             'pretty_version' => 'v4.16.0',
             'version' => '4.16.0.0',
@@ -18,15 +27,6 @@
             'install_path' => __DIR__ . '/../ezyang/htmlpurifier',
             'aliases' => array(),
             'dev_requirement' => true,
-        ),
-        'gestima/gestima' => array(
-            'pretty_version' => 'dev-main',
-            'version' => 'dev-main',
-            'reference' => '9a03afe85a489a01ed4233bb69f36e615eb3150e',
-            'type' => 'projet',
-            'install_path' => __DIR__ . '/../../',
-            'aliases' => array(),
-            'dev_requirement' => false,
         ),
         'guzzlehttp/guzzle' => array(
             'pretty_version' => '7.5.0',

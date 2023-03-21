@@ -1,6 +1,6 @@
 <?php
 
-require 'bin/epaphrodite/define/define_directory.php';
+require 'bin/epaphrodite/define/SetDirectory.php';
 
 require _DIR_VENDOR_ . '/autoload.php';
 require _DIR_VENDOR_ . '/Autoloader.php';

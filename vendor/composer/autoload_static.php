@@ -53,7 +53,10 @@ class ComposerStaticInitb86cbf36fc16df77a1dbbd9288a7a618
             'GuzzleHttp\\Psr7\\' => 16,
             'GuzzleHttp\\Promise\\' => 19,
             'GuzzleHttp\\' => 11,
-            'Gestima\\Gestima\\' => 16,
+        ),
+        'E' => 
+        array (
+            'Epaphrodite\\EpaphroditeFramework\\' => 33,
         ),
         'C' => 
         array (
@@ -127,7 +130,7 @@ class ComposerStaticInitb86cbf36fc16df77a1dbbd9288a7a618
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
         ),
-        'Gestima\\Gestima\\' => 
+        'Epaphrodite\\EpaphroditeFramework\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),

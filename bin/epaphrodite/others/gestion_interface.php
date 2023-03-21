@@ -18,7 +18,6 @@ class gestion_interface
     public function admin(?int $key = null, ?string $url = null)
     {
 
-
         if ($key !== null) {
 
             $this->interface =

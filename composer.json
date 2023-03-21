@@ -1,5 +1,5 @@
 {
-    "name": "gestima/gestima",
+    "name": "epaphrodite/epaphrodite-framework",
     "description": "Epaphrodite-Framework est un framework developper en php. Qui a pour objectif de mettre en place un système simple facile à manipuler et qui s'inscrit dans le monde du libre",
     "type": "projet",
     "keywords": [
@@ -9,9 +9,12 @@
     ],
     "license": "MIT",
     "minimum-stability": "stable",
+    "support": {
+        "source": "https://github.com/ysrael-aime-ndri/epaphrodite-framework"
+    },
     "autoload": {
         "psr-4": {
-            "Gestima\\Gestima\\": "src/"
+            "Epaphrodite\\EpaphroditeFramework\\": "src/"
         }
     },
     "authors": [

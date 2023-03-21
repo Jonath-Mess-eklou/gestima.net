@@ -12,8 +12,8 @@ class token_csrf{
 
     function __construct()
     {
-        $this->csrf = new validate_token();
-        $this->token_value = new gettokenvalue();
+        $this->csrf = new validate_token;
+        $this->token_value = new gettokenvalue;
     }
 
     /**

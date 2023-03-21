@@ -2,10 +2,10 @@
 
 namespace bin\controllers\controllers;
 
-use bin\controllers\render\twig;
 use bin\controllers\render\errors;
+use bin\epaphrodite\heredia\SwtchersHeredia;
 
-class parametre_app extends twig
+class parametre_app extends SwtchersHeredia
 {
 
     /**
@@ -14,7 +14,6 @@ class parametre_app extends twig
      * @var \bin\epaphrodite\path\paths $path
      * @var \bin\database\users_right\datas_array $datas
      * @var \bin\epaphrodite\auth\session_auth $session
-     * @var \bin\epaphrodite\crf_token\token_csrf $csrf
      * @var \bin\epaphrodite\env\layouts $layouts
      * @var \bin\epaphrodite\define\text_messages $msg
      * @var \bin\database\requests\select\sql_infosgeneral $infos 
@@ -48,9 +47,8 @@ class parametre_app extends twig
         $this->errors = new errors;
         $this->env = new \bin\epaphrodite\env\env;
         $this->datas = new \bin\database\datas\datas;
-        $this->path = new \bin\epaphrodite\path\paths;
         $this->layouts = new \bin\epaphrodite\env\layouts;
-        $this->msg = new \bin\epaphrodite\define\text_messages;
+        $this->msg = new \bin\epaphrodite\define\SetTextMessages;
         $this->count = new \bin\database\requests\select\count;
         $this->session = new \bin\epaphrodite\auth\session_auth;
         $this->update = new \bin\database\requests\update\update;
@@ -60,10 +58,22 @@ class parametre_app extends twig
         $this->get_id = new \bin\database\requests\select\get_id;
     }
 
-    public function epaphrodite($html)
+    /**
+     * **********************************************************************************************
+        * Rooter constructor
+        *
+        * @return \bin\controllers\render\rooter
+    */
+    private static function rooter(): \bin\controllers\render\rooter
+    {
+        return new \bin\controllers\render\rooter;
+    }
+
+    protected function epaphrodite($html)
     {
 
-        if (file_exists(_DIR_VIEWS_ . _DIR_ADMIN_TEMP_ . $html . '.html')) {
+        SELF::directory( $html , true) === false ? $this->errors->error_404() : NULL;
+
             /**
              * @param string $alert
              */
@@ -76,9 +86,9 @@ class parametre_app extends twig
              * @param array $array
              * @return mixed
              */
-            if ($html === "setting/ajouter_droits_acces_utilisateur_ep" && $this->session->type() === 1) {
+            if ( SELF::SwitcherPages( 'setting/ajouter_droits_acces_utilisateur' , $html ) === true ) {
 
-                $reponses = '';
+                $ans = '';
                 $alert = '';
                 $idtype = 0;
 
@@ -92,31 +102,15 @@ class parametre_app extends twig
 
                     if ($this->result === true) {
                         $alert = 'alert-success';
-                        $reponses = $this->msg->answers('succes');
+                        $ans = $this->msg->answers('succes');
                     }
                     if ($this->result === false) {
                         $alert = 'alert-danger';
-                        $reponses = $this->msg->answers('rightexist');
+                        $ans = $this->msg->answers('rightexist');
                     }
                 }
 
-                $this->render(
-                    _DIR_ADMIN_TEMP_ . $html,
-                    [
-                        'alert' => $alert,
-                        'type' => $idtype,
-                        'env' => $this->env,
-                        'path' => $this->path,
-                        'reponse' => $reponses,
-                        'datas' => $this->datas,
-                        'messages' => $this->msg,
-                        'form' => $this->layouts->forms(),
-                        'message' => $this->layouts->msg(),
-                        'login' => $this->session->nomprenoms(),
-                        'breadcrumb' => $this->layouts->breadcrumbs(),
-                        'layouts' => $this->layouts->admin($this->session->type()),
-                    ]
-                );
+                SELF::rooter()->target( _DIR_ADMIN_TEMP_ . $html )->content( [ 'type' => $idtype , 'reponse' => $ans, 'alert' => $alert, 'env' => $this->env, 'data' => $this->datas, ],true)->get();
             }
 
             /**
@@ -126,9 +120,9 @@ class parametre_app extends twig
              * @param array $array
              * @return mixed
              */
-            elseif ($html === "setting/liste_gest_droits_users_ep" && $this->session->type() === 1) {
+            if ( SELF::SwitcherPages( 'setting/liste_gest_droits_users' , $html ) === true ) {
 
-                $reponses = '';
+                $ans = '';
                 $alert = '';
                 $select = [];
                 $idtype = 0;
@@ -143,11 +137,11 @@ class parametre_app extends twig
 
                     if ($this->result === true) {
                         $alert = 'alert-success';
-                        $reponses = $this->msg->answers('succes');
+                        $ans = $this->msg->answers('succes');
                     }
                     if ($this->result === false) {
                         $alert = 'alert-danger';
-                        $reponses = $this->msg->answers('error');
+                        $ans = $this->msg->answers('error');
                     }
                 }
 
@@ -157,11 +151,11 @@ class parametre_app extends twig
 
                     if ($this->result === true) {
                         $alert = 'alert-success';
-                        $reponses = $this->msg->answers('succes');
+                        $ans = $this->msg->answers('succes');
                     }
                     if ($this->result === false) {
                         $alert = 'alert-danger';
-                        $reponses = $this->msg->answers('error');
+                        $ans = $this->msg->answers('error');
                     }
                 }
 
@@ -171,32 +165,15 @@ class parametre_app extends twig
 
                     if ($this->result === true) {
                         $alert = 'alert-success';
-                        $reponses = $this->msg->answers('succes');
+                        $ans = $this->msg->answers('succes');
                     }
                     if ($this->result === false) {
                         $alert = 'alert-danger';
-                        $reponses = $this->msg->answers('error');
+                        $ans = $this->msg->answers('error');
                     }
                 }
 
-                $this->render(
-                    _DIR_ADMIN_TEMP_ . $html,
-                    [
-                        'path' => $this->path,
-                        'env' => $this->env,
-                        'messages' => $this->msg,
-                        'reponse' => $reponses,
-                        'alert' => $alert,
-                        'datas' => $this->datas,
-                        'menus' => $this->get_id,
-                        'select' => $this->get_id->users_rights($idtype),
-                        'form' => $this->layouts->forms(),
-                        'message' => $this->layouts->msg(),
-                        'login' => $this->session->nomprenoms(),
-                        'breadcrumb' => $this->layouts->breadcrumbs(),
-                        'layouts' => $this->layouts->admin($this->session->type()),
-                    ]
-                );
+                SELF::rooter()->target( _DIR_ADMIN_TEMP_ . $html )->content( [ 'select' => $this->get_id->users_rights($idtype) , 'reponse' => $ans , 'alert' => $alert , 'env' => $this->env , 'data' => $this->datas ],true)->get();
             }
 
             /**
@@ -206,9 +183,9 @@ class parametre_app extends twig
              * @param array $array
              * @return mixed
              */
-            elseif ($html === "setting/gest_droits_acces_users_ep" && $this->session->type() === 1) {
+            if ( SELF::SwitcherPages( 'setting/gest_droits_acces_users' , $html ) === true ) {
 
-                $reponses = '';
+                $ans = '';
                 $alert = '';
 
                 if (isset($_POST['__deleted__'])) {
@@ -219,42 +196,20 @@ class parametre_app extends twig
 
                         if ($this->result === true) {
                             $alert = 'alert-success';
-                            $reponses = $this->msg->answers('succes');
+                            $ans = $this->msg->answers('succes');
                         }
                         if ($this->result === false) {
                             $alert = 'alert-danger';
-                            $reponses = $this->msg->answers('error');
+                            $ans = $this->msg->answers('error');
                         }
                     } else {
                         $alert = 'alert-danger';
-                        $reponses = $this->msg->answers('denie_action');
+                        $ans = $this->msg->answers('denie_action');
                     }
                 }
 
-                $this->render(
-                    _DIR_ADMIN_TEMP_ . $html,
-                    [
-                        'path' => $this->path,
-                        'env' => $this->env,
-                        'reponse' => $reponses,
-                        'alert' => $alert,
-                        'auth' => $this->session,
-                        'datas' => $this->datas,
-                        'messages' => $this->msg,
-                        'select' => $this->datas->user(),
-                        'form' => $this->layouts->forms(),
-                        'message' => $this->layouts->msg(),
-                        'login' => $this->session->nomprenoms(),
-                        'breadcrumb' => $this->layouts->breadcrumbs(),
-                        'layouts' => $this->layouts->admin($this->session->type()),
-                    ]
-                );
-            } else {
-                $this->errors->error_403();
-            }
-        } else {
-            $this->errors->error_404();
-        }
+                SELF::rooter()->target( _DIR_ADMIN_TEMP_ . $html )->content( [ 'select' => $this->datas->user() , 'auth' => $this->session , 'reponse' => $ans , 'alert' => $alert , 'env' => $this->env , 'datas' => $this->datas ],true)->get();
+            } 
     }
 }
 

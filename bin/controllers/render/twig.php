@@ -27,7 +27,7 @@ class twig {
      * 
      * @return mixed
     */    
-    public function twig_env(){
+    private function twig_env(){
 
         $this->twig = new Environment ( $this->twig_filseystem() , [ 'cache' =>false ]);
 
@@ -44,7 +44,7 @@ class twig {
      */ 
     public function render( string $view , array $array ){
         
-      echo $this->twig_env()->render( $view.'.html', $array );
+      echo $this->twig_env()->render( $view . '.html' , $array );
 
     }    
 

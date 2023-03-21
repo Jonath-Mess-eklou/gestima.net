@@ -1,4 +1,4 @@
-{% extends layouts %}{% from breadcrumb import breadcrumb_field %} {% from message import alert_msg %}{% from form import button , loader %}{% from message import alert_msg %} {% block content %}{{ breadcrumb_field( path.dashboard('admin/') ,'ATTRIBUTION
+{% extends layouts %}{% from breadcrumb import breadcrumb_field %} {% from message import alert_msg %}{% from forms import button , loader %}{% from message import alert_msg %} {% block content %}{{ breadcrumb_field( path.dashboard('admin/') ,'ATTRIBUTION
 DES DROITS AUX UTILISATEURS' )}}
 <div class="container">
     {{ alert_msg( reponse , alert ) }}
