@@ -1,30 +1,30 @@
 <?php return array(
     'root' => array(
-        'name' => 'epaphrodite/twig',
+        'name' => 'gestima/gestima',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'b25ed7e74b9003a5327616af06834026b048b1b0',
-        'type' => 'library',
+        'reference' => '9a03afe85a489a01ed4233bb69f36e615eb3150e',
+        'type' => 'projet',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
         'dev' => true,
     ),
     'versions' => array(
-        'epaphrodite/twig' => array(
-            'pretty_version' => 'dev-main',
-            'version' => 'dev-main',
-            'reference' => 'b25ed7e74b9003a5327616af06834026b048b1b0',
-            'type' => 'library',
-            'install_path' => __DIR__ . '/../../',
-            'aliases' => array(),
-            'dev_requirement' => false,
-        ),
         'ezyang/htmlpurifier' => array(
             'pretty_version' => 'v4.16.0',
             'version' => '4.16.0.0',
             'reference' => '523407fb06eb9e5f3d59889b3978d5bfe94299c8',
             'type' => 'library',
             'install_path' => __DIR__ . '/../ezyang/htmlpurifier',
+            'aliases' => array(),
+            'dev_requirement' => true,
+        ),
+        'gestima/gestima' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'reference' => '9a03afe85a489a01ed4233bb69f36e615eb3150e',
+            'type' => 'projet',
+            'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
@@ -35,7 +35,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../guzzlehttp/guzzle',
             'aliases' => array(),
-            'dev_requirement' => false,
+            'dev_requirement' => true,
         ),
         'guzzlehttp/promises' => array(
             'pretty_version' => '1.5.2',
@@ -44,16 +44,16 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../guzzlehttp/promises',
             'aliases' => array(),
-            'dev_requirement' => false,
+            'dev_requirement' => true,
         ),
         'guzzlehttp/psr7' => array(
-            'pretty_version' => '2.4.3',
-            'version' => '2.4.3.0',
-            'reference' => '67c26b443f348a51926030c83481b85718457d3d',
+            'pretty_version' => '2.4.4',
+            'version' => '2.4.4.0',
+            'reference' => '3cf1b6d4f0c820a2cf8bcaec39fc698f3443b5cf',
             'type' => 'library',
             'install_path' => __DIR__ . '/../guzzlehttp/psr7',
             'aliases' => array(),
-            'dev_requirement' => false,
+            'dev_requirement' => true,
         ),
         'maennchen/zipstream-php' => array(
             'pretty_version' => 'v2.4.0',
@@ -62,7 +62,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../maennchen/zipstream-php',
             'aliases' => array(),
-            'dev_requirement' => false,
+            'dev_requirement' => true,
         ),
         'markbaker/complex' => array(
             'pretty_version' => '3.0.2',
@@ -71,7 +71,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../markbaker/complex',
             'aliases' => array(),
-            'dev_requirement' => false,
+            'dev_requirement' => true,
         ),
         'markbaker/matrix' => array(
             'pretty_version' => '3.0.1',
@@ -80,7 +80,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../markbaker/matrix',
             'aliases' => array(),
-            'dev_requirement' => false,
+            'dev_requirement' => true,
         ),
         'myclabs/php-enum' => array(
             'pretty_version' => '1.8.4',
@@ -89,7 +89,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../myclabs/php-enum',
             'aliases' => array(),
-            'dev_requirement' => false,
+            'dev_requirement' => true,
         ),
         'php-ai/php-ml' => array(
             'pretty_version' => '0.10.0',
@@ -98,7 +98,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../php-ai/php-ml',
             'aliases' => array(),
-            'dev_requirement' => false,
+            'dev_requirement' => true,
         ),
         'phpmailer/phpmailer' => array(
             'pretty_version' => 'v6.8.0',
@@ -107,7 +107,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpmailer/phpmailer',
             'aliases' => array(),
-            'dev_requirement' => false,
+            'dev_requirement' => true,
         ),
         'phpoffice/phpspreadsheet' => array(
             'pretty_version' => '1.28.0',
@@ -116,7 +116,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpoffice/phpspreadsheet',
             'aliases' => array(),
-            'dev_requirement' => false,
+            'dev_requirement' => true,
         ),
         'psr/http-client' => array(
             'pretty_version' => '1.0.1',
@@ -125,10 +125,10 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../psr/http-client',
             'aliases' => array(),
-            'dev_requirement' => false,
+            'dev_requirement' => true,
         ),
         'psr/http-client-implementation' => array(
-            'dev_requirement' => false,
+            'dev_requirement' => true,
             'provided' => array(
                 0 => '1.0',
             ),
@@ -140,10 +140,10 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../psr/http-factory',
             'aliases' => array(),
-            'dev_requirement' => false,
+            'dev_requirement' => true,
         ),
         'psr/http-factory-implementation' => array(
-            'dev_requirement' => false,
+            'dev_requirement' => true,
             'provided' => array(
                 0 => '1.0',
             ),
@@ -155,10 +155,10 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../psr/http-message',
             'aliases' => array(),
-            'dev_requirement' => false,
+            'dev_requirement' => true,
         ),
         'psr/http-message-implementation' => array(
-            'dev_requirement' => false,
+            'dev_requirement' => true,
             'provided' => array(
                 0 => '1.0',
             ),
@@ -170,7 +170,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../psr/simple-cache',
             'aliases' => array(),
-            'dev_requirement' => false,
+            'dev_requirement' => true,
         ),
         'ralouphie/getallheaders' => array(
             'pretty_version' => '3.0.3',
@@ -179,7 +179,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../ralouphie/getallheaders',
             'aliases' => array(),
-            'dev_requirement' => false,
+            'dev_requirement' => true,
         ),
         'symfony/deprecation-contracts' => array(
             'pretty_version' => 'v3.2.1',
@@ -188,7 +188,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/deprecation-contracts',
             'aliases' => array(),
-            'dev_requirement' => false,
+            'dev_requirement' => true,
         ),
         'symfony/polyfill-ctype' => array(
             'pretty_version' => 'v1.27.0',
@@ -197,7 +197,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/polyfill-ctype',
             'aliases' => array(),
-            'dev_requirement' => false,
+            'dev_requirement' => true,
         ),
         'symfony/polyfill-mbstring' => array(
             'pretty_version' => 'v1.27.0',
@@ -206,7 +206,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../symfony/polyfill-mbstring',
             'aliases' => array(),
-            'dev_requirement' => false,
+            'dev_requirement' => true,
         ),
         'thiagoalessio/tesseract_ocr' => array(
             'pretty_version' => '2.12.0',
@@ -215,7 +215,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../thiagoalessio/tesseract_ocr',
             'aliases' => array(),
-            'dev_requirement' => false,
+            'dev_requirement' => true,
         ),
         'twig/twig' => array(
             'pretty_version' => 'v3.5.1',
@@ -224,7 +224,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../twig/twig',
             'aliases' => array(),
-            'dev_requirement' => false,
+            'dev_requirement' => true,
         ),
     ),
 );

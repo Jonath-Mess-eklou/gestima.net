@@ -1,9 +1,15 @@
 {
-    "packages": [
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "07b5de68c87cdaf637e8d5d05ca3ea58",
+    "packages": [],
+    "packages-dev": [
         {
             "name": "ezyang/htmlpurifier",
             "version": "v4.16.0",
-            "version_normalized": "4.16.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ezyang/htmlpurifier.git",
@@ -28,9 +34,7 @@
                 "ext-iconv": "Converts text to and from non-UTF-8 encodings",
                 "ext-tidy": "Used for pretty-printing HTML"
             },
-            "time": "2022-09-18T07:06:19+00:00",
             "type": "library",
-            "installation-source": "dist",
             "autoload": {
                 "files": [
                     "library/HTMLPurifier.composer.php"
@@ -62,12 +66,11 @@
                 "issues": "https://github.com/ezyang/htmlpurifier/issues",
                 "source": "https://github.com/ezyang/htmlpurifier/tree/v4.16.0"
             },
-            "install-path": "../ezyang/htmlpurifier"
+            "time": "2022-09-18T07:06:19+00:00"
         },
         {
             "name": "guzzlehttp/guzzle",
             "version": "7.5.0",
-            "version_normalized": "7.5.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
@@ -102,7 +105,6 @@
                 "ext-intl": "Required for Internationalized Domain Name (IDN) support",
                 "psr/log": "Required for using the Log middleware"
             },
-            "time": "2022-08-28T15:39:27+00:00",
             "type": "library",
             "extra": {
                 "bamarni-bin": {
@@ -113,7 +115,6 @@
                     "dev-master": "7.5-dev"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "files": [
                     "src/functions_include.php"
@@ -193,12 +194,11 @@
                     "type": "tidelift"
                 }
             ],
-            "install-path": "../guzzlehttp/guzzle"
+            "time": "2022-08-28T15:39:27+00:00"
         },
         {
             "name": "guzzlehttp/promises",
             "version": "1.5.2",
-            "version_normalized": "1.5.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/promises.git",
@@ -216,14 +216,12 @@
             "require-dev": {
                 "symfony/phpunit-bridge": "^4.4 || ^5.1"
             },
-            "time": "2022-08-28T14:55:35+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-master": "1.5-dev"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "files": [
                     "src/functions_include.php"
@@ -280,21 +278,20 @@
                     "type": "tidelift"
                 }
             ],
-            "install-path": "../guzzlehttp/promises"
+            "time": "2022-08-28T14:55:35+00:00"
         },
         {
             "name": "guzzlehttp/psr7",
-            "version": "2.4.3",
-            "version_normalized": "2.4.3.0",
+            "version": "2.4.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/psr7.git",
-                "reference": "67c26b443f348a51926030c83481b85718457d3d"
+                "reference": "3cf1b6d4f0c820a2cf8bcaec39fc698f3443b5cf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/psr7/zipball/67c26b443f348a51926030c83481b85718457d3d",
-                "reference": "67c26b443f348a51926030c83481b85718457d3d",
+                "url": "https://api.github.com/repos/guzzle/psr7/zipball/3cf1b6d4f0c820a2cf8bcaec39fc698f3443b5cf",
+                "reference": "3cf1b6d4f0c820a2cf8bcaec39fc698f3443b5cf",
                 "shasum": ""
             },
             "require": {
@@ -315,7 +312,6 @@
             "suggest": {
                 "laminas/laminas-httphandlerrunner": "Emit PSR-7 responses"
             },
-            "time": "2022-10-26T14:07:24+00:00",
             "type": "library",
             "extra": {
                 "bamarni-bin": {
@@ -326,7 +322,6 @@
                     "dev-master": "2.4-dev"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "GuzzleHttp\\Psr7\\": "src/"
@@ -386,7 +381,7 @@
             ],
             "support": {
                 "issues": "https://github.com/guzzle/psr7/issues",
-                "source": "https://github.com/guzzle/psr7/tree/2.4.3"
+                "source": "https://github.com/guzzle/psr7/tree/2.4.4"
             },
             "funding": [
                 {
@@ -402,12 +397,11 @@
                     "type": "tidelift"
                 }
             ],
-            "install-path": "../guzzlehttp/psr7"
+            "time": "2023-03-09T13:19:02+00:00"
         },
         {
             "name": "maennchen/zipstream-php",
             "version": "v2.4.0",
-            "version_normalized": "2.4.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/maennchen/ZipStream-PHP.git",
@@ -434,9 +428,7 @@
                 "phpunit/phpunit": "^8.5.8 || ^9.4.2",
                 "vimeo/psalm": "^5.0"
             },
-            "time": "2022-12-08T12:29:14+00:00",
             "type": "library",
-            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "ZipStream\\": "src/"
@@ -483,12 +475,11 @@
                     "type": "open_collective"
                 }
             ],
-            "install-path": "../maennchen/zipstream-php"
+            "time": "2022-12-08T12:29:14+00:00"
         },
         {
             "name": "markbaker/complex",
             "version": "3.0.2",
-            "version_normalized": "3.0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/MarkBaker/PHPComplex.git",
@@ -509,9 +500,7 @@
                 "phpunit/phpunit": "^7.0 || ^8.0 || ^9.0",
                 "squizlabs/php_codesniffer": "^3.7"
             },
-            "time": "2022-12-06T16:21:08+00:00",
             "type": "library",
-            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Complex\\": "classes/src/"
@@ -537,12 +526,11 @@
                 "issues": "https://github.com/MarkBaker/PHPComplex/issues",
                 "source": "https://github.com/MarkBaker/PHPComplex/tree/3.0.2"
             },
-            "install-path": "../markbaker/complex"
+            "time": "2022-12-06T16:21:08+00:00"
         },
         {
             "name": "markbaker/matrix",
             "version": "3.0.1",
-            "version_normalized": "3.0.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/MarkBaker/PHPMatrix.git",
@@ -567,9 +555,7 @@
                 "sebastian/phpcpd": "^4.0",
                 "squizlabs/php_codesniffer": "^3.7"
             },
-            "time": "2022-12-02T22:17:43+00:00",
             "type": "library",
-            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Matrix\\": "classes/src/"
@@ -596,12 +582,11 @@
                 "issues": "https://github.com/MarkBaker/PHPMatrix/issues",
                 "source": "https://github.com/MarkBaker/PHPMatrix/tree/3.0.1"
             },
-            "install-path": "../markbaker/matrix"
+            "time": "2022-12-02T22:17:43+00:00"
         },
         {
             "name": "myclabs/php-enum",
             "version": "1.8.4",
-            "version_normalized": "1.8.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/myclabs/php-enum.git",
@@ -622,9 +607,7 @@
                 "squizlabs/php_codesniffer": "1.*",
                 "vimeo/psalm": "^4.6.2"
             },
-            "time": "2022-08-04T09:53:51+00:00",
             "type": "library",
-            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "MyCLabs\\Enum\\": "src/"
@@ -662,12 +645,11 @@
                     "type": "tidelift"
                 }
             ],
-            "install-path": "../myclabs/php-enum"
+            "time": "2022-08-04T09:53:51+00:00"
         },
         {
             "name": "php-ai/php-ml",
             "version": "0.10.0",
-            "version_normalized": "0.10.0.0",
             "source": {
                 "type": "git",
                 "url": "git@gitlab.com:php-ai/php-ml.git",
@@ -689,9 +671,7 @@
                 "phpstan/phpstan-strict-rules": "^0.12",
                 "phpunit/phpunit": "^8.0"
             },
-            "time": "2022-11-09T09:25:29+00:00",
             "type": "library",
-            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Phpml\\": "src/"
@@ -718,12 +698,11 @@
                 "machine learning",
                 "pattern recognition"
             ],
-            "install-path": "../php-ai/php-ml"
+            "time": "2022-11-09T09:25:29+00:00"
         },
         {
             "name": "phpmailer/phpmailer",
             "version": "v6.8.0",
-            "version_normalized": "6.8.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPMailer/PHPMailer.git",
@@ -761,9 +740,7 @@
                 "symfony/polyfill-mbstring": "To support UTF-8 if the Mbstring PHP extension is not enabled (^1.2)",
                 "thenetworg/oauth2-azure": "Needed for Microsoft XOAUTH2 authentication"
             },
-            "time": "2023-03-06T14:43:22+00:00",
             "type": "library",
-            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "PHPMailer\\PHPMailer\\": "src/"
@@ -801,12 +778,11 @@
                     "type": "github"
                 }
             ],
-            "install-path": "../phpmailer/phpmailer"
+            "time": "2023-03-06T14:43:22+00:00"
         },
         {
             "name": "phpoffice/phpspreadsheet",
             "version": "1.28.0",
-            "version_normalized": "1.28.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPOffice/PhpSpreadsheet.git",
@@ -861,9 +837,7 @@
                 "mpdf/mpdf": "Option for rendering PDF with PDF Writer",
                 "tecnickcom/tcpdf": "Option for rendering PDF with PDF Writer"
             },
-            "time": "2023-02-25T12:24:49+00:00",
             "type": "library",
-            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "PhpOffice\\PhpSpreadsheet\\": "src/PhpSpreadsheet"
@@ -909,12 +883,11 @@
                 "issues": "https://github.com/PHPOffice/PhpSpreadsheet/issues",
                 "source": "https://github.com/PHPOffice/PhpSpreadsheet/tree/1.28.0"
             },
-            "install-path": "../phpoffice/phpspreadsheet"
+            "time": "2023-02-25T12:24:49+00:00"
         },
         {
             "name": "psr/http-client",
             "version": "1.0.1",
-            "version_normalized": "1.0.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/http-client.git",
@@ -930,14 +903,12 @@
                 "php": "^7.0 || ^8.0",
                 "psr/http-message": "^1.0"
             },
-            "time": "2020-06-29T06:28:15+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-master": "1.0.x-dev"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Psr\\Http\\Client\\": "src/"
@@ -964,12 +935,11 @@
             "support": {
                 "source": "https://github.com/php-fig/http-client/tree/master"
             },
-            "install-path": "../psr/http-client"
+            "time": "2020-06-29T06:28:15+00:00"
         },
         {
             "name": "psr/http-factory",
             "version": "1.0.1",
-            "version_normalized": "1.0.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/http-factory.git",
@@ -985,14 +955,12 @@
                 "php": ">=7.0.0",
                 "psr/http-message": "^1.0"
             },
-            "time": "2019-04-30T12:38:16+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-master": "1.0.x-dev"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Psr\\Http\\Message\\": "src/"
@@ -1022,12 +990,11 @@
             "support": {
                 "source": "https://github.com/php-fig/http-factory/tree/master"
             },
-            "install-path": "../psr/http-factory"
+            "time": "2019-04-30T12:38:16+00:00"
         },
         {
             "name": "psr/http-message",
             "version": "1.0.1",
-            "version_normalized": "1.0.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/http-message.git",
@@ -1042,14 +1009,12 @@
             "require": {
                 "php": ">=5.3.0"
             },
-            "time": "2016-08-06T14:39:51+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-master": "1.0.x-dev"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Psr\\Http\\Message\\": "src/"
@@ -1078,12 +1043,11 @@
             "support": {
                 "source": "https://github.com/php-fig/http-message/tree/master"
             },
-            "install-path": "../psr/http-message"
+            "time": "2016-08-06T14:39:51+00:00"
         },
         {
             "name": "psr/simple-cache",
             "version": "3.0.0",
-            "version_normalized": "3.0.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/simple-cache.git",
@@ -1098,14 +1062,12 @@
             "require": {
                 "php": ">=8.0.0"
             },
-            "time": "2021-10-29T13:26:27+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-master": "3.0.x-dev"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Psr\\SimpleCache\\": "src/"
@@ -1132,12 +1094,11 @@
             "support": {
                 "source": "https://github.com/php-fig/simple-cache/tree/3.0.0"
             },
-            "install-path": "../psr/simple-cache"
+            "time": "2021-10-29T13:26:27+00:00"
         },
         {
             "name": "ralouphie/getallheaders",
             "version": "3.0.3",
-            "version_normalized": "3.0.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ralouphie/getallheaders.git",
@@ -1156,9 +1117,7 @@
                 "php-coveralls/php-coveralls": "^2.1",
                 "phpunit/phpunit": "^5 || ^6.5"
             },
-            "time": "2019-03-08T08:55:37+00:00",
             "type": "library",
-            "installation-source": "dist",
             "autoload": {
                 "files": [
                     "src/getallheaders.php"
@@ -1179,12 +1138,11 @@
                 "issues": "https://github.com/ralouphie/getallheaders/issues",
                 "source": "https://github.com/ralouphie/getallheaders/tree/develop"
             },
-            "install-path": "../ralouphie/getallheaders"
+            "time": "2019-03-08T08:55:37+00:00"
         },
         {
             "name": "symfony/deprecation-contracts",
             "version": "v3.2.1",
-            "version_normalized": "3.2.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/deprecation-contracts.git",
@@ -1199,7 +1157,6 @@
             "require": {
                 "php": ">=8.1"
             },
-            "time": "2023-03-01T10:25:55+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1210,7 +1167,6 @@
                     "url": "https://github.com/symfony/contracts"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "files": [
                     "function.php"
@@ -1249,12 +1205,11 @@
                     "type": "tidelift"
                 }
             ],
-            "install-path": "../symfony/deprecation-contracts"
+            "time": "2023-03-01T10:25:55+00:00"
         },
         {
             "name": "symfony/polyfill-ctype",
             "version": "v1.27.0",
-            "version_normalized": "1.27.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-ctype.git",
@@ -1275,7 +1230,6 @@
             "suggest": {
                 "ext-ctype": "For best performance"
             },
-            "time": "2022-11-03T14:55:06+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1286,7 +1240,6 @@
                     "url": "https://github.com/symfony/polyfill"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "files": [
                     "bootstrap.php"
@@ -1334,12 +1287,11 @@
                     "type": "tidelift"
                 }
             ],
-            "install-path": "../symfony/polyfill-ctype"
+            "time": "2022-11-03T14:55:06+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
             "version": "v1.27.0",
-            "version_normalized": "1.27.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-mbstring.git",
@@ -1360,7 +1312,6 @@
             "suggest": {
                 "ext-mbstring": "For best performance"
             },
-            "time": "2022-11-03T14:55:06+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -1371,7 +1322,6 @@
                     "url": "https://github.com/symfony/polyfill"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "files": [
                     "bootstrap.php"
@@ -1420,12 +1370,11 @@
                     "type": "tidelift"
                 }
             ],
-            "install-path": "../symfony/polyfill-mbstring"
+            "time": "2022-11-03T14:55:06+00:00"
         },
         {
             "name": "thiagoalessio/tesseract_ocr",
             "version": "2.12.0",
-            "version_normalized": "2.12.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/thiagoalessio/tesseract-ocr-for-php.git",
@@ -1443,9 +1392,7 @@
             "require-dev": {
                 "phpunit/php-code-coverage": "^2.2.4 || ^9.0.0"
             },
-            "time": "2021-06-04T21:21:33+00:00",
             "type": "library",
-            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "thiagoalessio\\TesseractOCR\\": "src/"
@@ -1472,12 +1419,11 @@
                 "issues": "https://github.com/thiagoalessio/tesseract-ocr-for-php/issues",
                 "source": "https://github.com/thiagoalessio/tesseract-ocr-for-php"
             },
-            "install-path": "../thiagoalessio/tesseract_ocr"
+            "time": "2021-06-04T21:21:33+00:00"
         },
         {
             "name": "twig/twig",
             "version": "v3.5.1",
-            "version_normalized": "3.5.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
@@ -1498,14 +1444,12 @@
                 "psr/container": "^1.0",
                 "symfony/phpunit-bridge": "^4.4.9|^5.0.9|^6.0"
             },
-            "time": "2023-02-08T07:49:20+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-master": "3.5-dev"
                 }
             },
-            "installation-source": "dist",
             "autoload": {
                 "psr-4": {
                     "Twig\\": "src/"
@@ -1551,9 +1495,19 @@
                     "type": "tidelift"
                 }
             ],
-            "install-path": "../twig/twig"
+            "time": "2023-02-08T07:49:20+00:00"
         }
     ],
-    "dev": true,
-    "dev-package-names": []
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {
+        "php": "8.2.*"
+    },
+    "platform-dev": {
+        "php": ">=8.1"
+    },
+    "plugin-api-version": "2.3.0"
 }

@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInitccb2ea5ddd1d6334fde445ab90191dd2
+class ComposerStaticInitb86cbf36fc16df77a1dbbd9288a7a618
 {
     public static $files = array (
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
@@ -53,10 +53,7 @@ class ComposerStaticInitccb2ea5ddd1d6334fde445ab90191dd2
             'GuzzleHttp\\Psr7\\' => 16,
             'GuzzleHttp\\Promise\\' => 19,
             'GuzzleHttp\\' => 11,
-        ),
-        'E' => 
-        array (
-            'Epaphrodite\\Twig\\' => 17,
+            'Gestima\\Gestima\\' => 16,
         ),
         'C' => 
         array (
@@ -130,7 +127,7 @@ class ComposerStaticInitccb2ea5ddd1d6334fde445ab90191dd2
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
         ),
-        'Epaphrodite\\Twig\\' => 
+        'Gestima\\Gestima\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
         ),
@@ -158,10 +155,10 @@ class ComposerStaticInitccb2ea5ddd1d6334fde445ab90191dd2
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInitccb2ea5ddd1d6334fde445ab90191dd2::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInitccb2ea5ddd1d6334fde445ab90191dd2::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInitccb2ea5ddd1d6334fde445ab90191dd2::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInitccb2ea5ddd1d6334fde445ab90191dd2::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInitb86cbf36fc16df77a1dbbd9288a7a618::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInitb86cbf36fc16df77a1dbbd9288a7a618::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInitb86cbf36fc16df77a1dbbd9288a7a618::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInitb86cbf36fc16df77a1dbbd9288a7a618::$classMap;
 
         }, null, ClassLoader::class);
     }
