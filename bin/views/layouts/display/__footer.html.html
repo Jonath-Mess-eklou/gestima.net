@@ -1,44 +1,43 @@
-<<<<<<< Updated upstream
-=======
-<style>
-
-    .footer{
-        
-    }
-    #social .fa{
-        font-size: 22px;
-        padding: 10px 15px;
-        background: green;
-    }
-    #social .a{
-        
-    }  
-</style>
-
-
 <div class="container-fluid"; style="background: #f1f1f1">
     <!--<img src="{{__img('eleve.jpg')}}" class="img-fluid">-->
-    <footer id="Footer">
+    <footer id="footer">
         <div class="row">
             <article class="col-lg-3 col-md-2 col-xs-12 col-sm-12" align="center">
                 <img src="{{__img('logodesps.png')}}" class="w-100 logo-footer" style="padding:5%">
                 <br>
                 <div class="position" style="margin-left: 15%;">
                     <span class="fa fa-map-marker"></span>
-                    Abidjan - Plateau
+                    <strong>Abidjan - Plateau</strong>
                     <br>
                     <span class="fa fa-building"></span>
-                    Tour D 23eme et 18eme etage
+                    <strong>Tour D 23eme et 18eme etage</strong>
                     <br>
                     <span class="fa fa-fax"></span>
-                    20 21 98 73
+                    <strong>20 21 98 73</strong>
                     <br>
                     <span class="fa fa-envelope"></span>
-                    courriel@men-desps.org
+                    <strong>courriel@men-desps.org</strong>
                 </div>
                 <br>
                 <div class="container">
+                    <a href="#" class="btn">
+                        <i class="fab fa fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="btn">
+                        <i class="fab fa fa-twitter"></i>
+                    </a>
+                    <a href="#" class="btn">
+                        <i class="fab fa fa-google-plus"></i>
+                    </a>
+                    <a href="#" class="btn">
+                        <i class="fab fa fa-instagram"></i>
+                    </a>
+                    <a href="#" class="btn">
+                        <i class="fab fa fa-github"></i>
+                    </a>
+                    <!--
                     <div id="social">
+                        
                         <a taget="_blank" href="#"><i class="fa fa-linkedin" style="color:rgb(255, 155, 5)" aria-hidden="true"></i></a>
                         &nbsp;
                         <a target="_blank" href="#"><i class="fa fa-facebook" style="color:rgb(255, 195, 55)" aria-hidden="true"></i></a>
@@ -46,7 +45,9 @@
                         <a target="_blank" href="#"><i class="fa fa-twitter" style="color:rgb(255, 195, 55)" aria-hidden="true"></i></a>
                         &nbsp;
                         <a target="_blank" href="#"><i class="fa fa-google-plus" style="color:rgb(255, 195, 55)" aria-hidden="true"></i></a>
+                        
                     </div>
+                    -->
                 </div>
             </article>
             <article class="col-lg-3 col-md-2 col-xs-12 col-sm-12">
@@ -84,26 +85,50 @@
                     </li>
                 </ul>
             </article>
-            <article class="col-lg-3 col-md-2 col-xs-12 col-sm-12">
-            </article>
-            <article class="col-lg-3 col-md-2 col-xs-12 col-sm-12">
+            <article class="col-lg-6 col-md-2 col-xs-12 col-sm-12">
                 <div class="localisation">
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7945.100530646113!2d-4.0253388069129015!3d5.332606566271361!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfc1ebca192a0ac1%3A0xea40d53369ec77a2!2sPlateau%20tour%20D!5e0!3m2!1sen!2sus!4v1596217733181!5m2!1sen!2sus;" 
-                    width="103%" height="400" aria-hidden="false">
-
+                    width="100%" height="400" aria-hidden="false" style="margin-top:9%">
                     </iframe>
                 </div>
             </article>
-            <article class="col-lg-3 col-md-2 col-xs-12 col-sm-12 copyright">
-                <p>
-                    copyright ©
-                    <script>
-                        document.write(new Date().getUTCFullYear());
-                    </script>
-                    2023 MENA / DESPS - By DESPS Developers Team
-                </p>
+        </div>
+        <div class="row" style="margin-top: 10px; margin-left:12%">
+            
+            <article class="col-lg-2 col-md-2 col-xs-12 col-sm-12">
+                <a href="#" target="_blank">
+                    <img src="{{__img('Bg_logomenet.png')}}" class="w-100 logo-footer padding:5%">
+                </a>
             </article>
+            <article class="col-lg-2 col-md-2 col-xs-12 col-sm-12">
+                <a href="#" target="_blank">
+                    <img src="{{__img('Bg_logodob.png')}}" class="w-100 logo-footer padding:5%">
+                </a>
+            </article>
+            <article class="col-lg-2 col-md-2 col-xs-12 col-sm-12">
+                <a href="#" target="_blank">
+                    <img src="{{__img('Bg_logodelc.png')}}" class="w-100 logo-footer padding:5%">
+                </a>
+            </article>
+            <article class="col-lg-2 col-md-2 col-xs-12 col-sm-12">
+                <a href="#" target="_blank">
+                    <img src="{{__img('Bg_logodee.png')}}" class="w-100 logo-footer padding:5%">
+                </a>
+            </article>
+            <article class="col-lg-2 col-md-2 col-xs-12 col-sm-12">
+                <a href="#" target="_blank">
+                    <img src="{{__img('Bg_logodeco.png')}}" class="w-100 logo-footer padding:5%">
+                </a>
+            </article>
+            
+        </div>
+        <div class="copyright">
+            <p class="">
+                Copyright &copy; 2023 MENA / DESPS - By DESPS Developers Team
+                <script>
+                    document.write(new Date().getFullYear());
+                </script>
+            </p>
         </div>
     </footer>
 </div>
->>>>>>> Stashed changes
