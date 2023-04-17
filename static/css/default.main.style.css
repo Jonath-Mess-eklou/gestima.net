@@ -255,6 +255,16 @@ body {
     # CSS du Footer
 -------------------------------------------------------------*/
 
+/*-------------------------- BLOCK DU PIED DE PAGE --------------------------*/
+.container-fluid{
+    margin-top:;
+    margin-left: 0;
+}
+#footer{
+    position: absolute;
+    background-color: #f1f1f1;
+}
+
 
 #social .fa{
     font-size: 22px;
@@ -264,9 +274,7 @@ body {
 #social{
     margin-left: 9.5%;
 }  
-#footer .row{
-    
-}
+
 #footer .copyright{
     text-align: center;
 }
