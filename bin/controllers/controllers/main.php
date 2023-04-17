@@ -22,6 +22,8 @@ class Control extends SwtchersHeredia
      */
 
     private $auth;
+
+    private $insert;
     private $email;
     private $sms;
     private $env;
@@ -44,6 +46,7 @@ class Control extends SwtchersHeredia
         $this->msg = new \bin\epaphrodite\define\SetTextMessages;
         $this->session = new \bin\epaphrodite\auth\session_auth;
         $this->email = new \bin\epaphrodite\api\email\send_mail;
+        $this->insert = new \bin\database\requests\insert\insert;
     }
 
     /**
@@ -72,6 +75,16 @@ class Control extends SwtchersHeredia
              */
            
              if(SELF::SwitcherPages( 'index' , $html )===true){
+
+                if(isset($_POST['ajouter'])){
+
+                    $result = $this->insert->addImages( $_POST['imge'] , $_POST['lien'] );
+                    if ($result === true) {
+                        $ans = $this->msg->answers('testjo');
+                        $class = "success";
+                    }
+                    
+                }
 
                 SELF::rooter()->target( _DIR_MAIN_TEMP_ . $html )->content([NULL])->get();  
              }

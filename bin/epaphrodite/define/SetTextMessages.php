@@ -19,6 +19,7 @@ class SetTextMessages
                 'session_name' => 'ep_session',
                 'token_name' => 'token_crf_ep',
                 '403' => 'Acces restreint !!!',
+                'testjo' => 'Ceci est un test',
                 'back' => "Retour page d'accueil",
                 'author' => 'Agence Epaphrodite',
                 'description' => 'agence epaphrodite',

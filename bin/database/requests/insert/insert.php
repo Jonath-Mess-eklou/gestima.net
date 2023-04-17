@@ -112,6 +112,20 @@ class insert
     }
 
 
+    public function addImages( ?string $nom = null , ?string $lien = null ){
+
+        $sql = $this->QueryBuilder()->table('image')->insert(' nom , lien ')->values(' ? , ?')->IQuery();
+
+        $this->process->insert( $sql , '' , [ $nom , $lien ] , false);
+
+        $action = 'Ajoutr une image';
+        
+        $this->action_recente($action);
+
+        return true;
+
+    }
+
     /**
      * Enregistrer les actions recentes
      * 
